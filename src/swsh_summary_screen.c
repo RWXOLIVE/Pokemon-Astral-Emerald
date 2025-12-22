@@ -120,6 +120,7 @@ enum SWSHSkillsPageState
 
 #define MOVE_SELECTOR_SPRITES_COUNT 10
 #define HELD_ITEM_BOX_SPRITES_COUNT 5
+#define ABILITY_BOX_SPRITES_COUNT 5
 #define TYPE_ICON_SPRITE_COUNT (MAX_MON_MOVES + 1)
 
 // Default font, see PrintTextOnWindow
@@ -154,7 +155,8 @@ enum SwShSummarySprites
     SPRITE_ARR_ID_MOVE_SELECTOR1 = SPRITE_ARR_ID_TYPE + TYPE_ICON_SPRITE_COUNT, // 10 sprites that make up the selector
     SPRITE_ARR_ID_MOVE_SELECTOR2 = SPRITE_ARR_ID_MOVE_SELECTOR1 + MOVE_SELECTOR_SPRITES_COUNT,
     SPRITE_ARR_ID_HELD_ITEM_BOX = SPRITE_ARR_ID_MOVE_SELECTOR2 + MOVE_SELECTOR_SPRITES_COUNT,
-    SPRITE_ARR_ID_COUNT = SPRITE_ARR_ID_HELD_ITEM_BOX + HELD_ITEM_BOX_SPRITES_COUNT
+    SPRITE_ARR_ID_ABILITY_BOX = SPRITE_ARR_ID_HELD_ITEM_BOX + HELD_ITEM_BOX_SPRITES_COUNT,
+    SPRITE_ARR_ID_COUNT = SPRITE_ARR_ID_ABILITY_BOX + ABILITY_BOX_SPRITES_COUNT
 };
 
 static EWRAM_DATA struct PokemonSummaryScreenData
@@ -350,6 +352,8 @@ static void RemoveAndCreateMonMarkingsSprite(struct Pokemon *);
 static void CreateCaughtBallSprite(struct Pokemon *);
 static void CreateHeldItemBoxSprites(void);
 static void DestroyHeldItemBoxSprites(void);
+static void CreateAbilityBoxSprites(void);
+static void DestroyAbilityBoxSprites(void);
 static void CreateHeldItemSprite(void);
 static void DestroyHeldItemIconSprite(void);
 static void CreateStatusSprite(void);
@@ -445,8 +449,8 @@ static const u8 sButtons_Gfx[][4 * TILE_SIZE_4BPP] = {
 static const u32 sTeraTypes_Gfx[]                   = INCBIN_U32("graphics/types_swsh_summary_screen/tera/tera_types_swsh.4bpp.lz");
 static const u32 sHeldItemBox_Gfx[]                 = INCBIN_U32("graphics/summary_screen/swsh/held_item_box.4bpp.lz");
 static const u16 sHeldItemBox_Pal[]                 = INCBIN_U16("graphics/summary_screen/swsh/held_item_box.gbapal");
-static const u32 sSummaryMoveSelect_Gfx[]           = INCBIN_U32("graphics/summary_screen/swsh/move_select.4bpp.lz");
-static const u16 sSummaryMoveSelect_Pal[]           = INCBIN_U16("graphics/summary_screen/swsh/move_select.gbapal");
+static const u32 sAbilityBox_Gfx[]                  = INCBIN_U32("graphics/summary_screen/swsh/ability_box.4bpp.lz");
+static const u32 sMoveSelect_Gfx[]                  = INCBIN_U32("graphics/summary_screen/swsh/move_select.4bpp.lz");
 static const u16 sMarkings_Pal[]                    = INCBIN_U16("graphics/summary_screen/swsh/markings.gbapal");
 static const u32 sShinyIcon_Gfx[]                   = INCBIN_U32("graphics/summary_screen/swsh/shiny_icon.4bpp.lz");
 static const u32 sPokerusCuredIcon_Gfx[]            = INCBIN_U32("graphics/summary_screen/swsh/pokerus_cured_icon.4bpp.lz");
@@ -459,8 +463,8 @@ static const u32 sFriendshipIcon_Gfx[]              = INCBIN_U32("graphics/summa
 // rave note: yeah I know doing this with a sprite is mad jank, but I promise I have my reasons
 // mont note: it is maaad jank, but it works, we promise
 static const u32 sRelearnPrompt_Gfx[]               = INCBIN_U32("graphics/summary_screen/swsh/relearn_prompt.4bpp.lz");
-static const u32 sRelearnPromptSwitch_Gfx[]               = INCBIN_U32("graphics/summary_screen/swsh/relearn_prompt_switch.4bpp.lz");
-static const u32 sLRButton_Gfx[]               = INCBIN_U32("graphics/summary_screen/swsh/lr_button.4bpp.lz");
+static const u32 sRelearnPromptSwitch_Gfx[]         = INCBIN_U32("graphics/summary_screen/swsh/relearn_prompt_switch.4bpp.lz");
+static const u32 sLRButton_Gfx[]                    = INCBIN_U32("graphics/summary_screen/swsh/lr_button.4bpp.lz");
 static const u32 sInfoPrompt_Gfx[]                  = INCBIN_U32("graphics/summary_screen/swsh/info_prompt.4bpp.lz");
 static const u32 sGigantamaxIcon_Gfx[]              = INCBIN_U32("graphics/summary_screen/swsh/gigantamax.4bpp.lz");
 
@@ -770,6 +774,7 @@ static void (*const sTextPrinterTasks[])(u8 taskId) =
 #define TAG_HELD_ITEM_BOX 30016
 #define TAG_HELD_ITEM_ICON 30017
 #define TAG_LR_BUTTON 30018
+#define TAG_ABILITY_BOX 30019
 
 enum SwShCategoryIcon
 {
@@ -1428,21 +1433,15 @@ static const union AnimCmd *const sSpriteAnimTable_MoveSelector[] = {
 
 static const struct CompressedSpriteSheet sMoveSelectorSpriteSheet =
 {
-    .data = sSummaryMoveSelect_Gfx,
+    .data = sMoveSelect_Gfx,
     .size = 16*192/2,
-    .tag = TAG_MOVE_SELECTOR
-};
-
-static const struct SpritePalette sMoveSelectorSpritePal =
-{
-    .data = sSummaryMoveSelect_Pal,
     .tag = TAG_MOVE_SELECTOR
 };
 
 static const struct SpriteTemplate sMoveSelectorSpriteTemplate =
 {
     .tileTag = TAG_MOVE_SELECTOR,
-    .paletteTag = TAG_MOVE_SELECTOR,
+    .paletteTag = TAG_HELD_ITEM_BOX,
     .oam = &sOamData_MoveSelector,
     .anims = sSpriteAnimTable_MoveSelector,
     .images = NULL,
@@ -1510,6 +1509,68 @@ static const struct SpriteTemplate sSpriteTemplate_HeldItemBox =
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallbackDummy,
 };
+
+static const struct OamData sOamData_AbilityBox =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .size = SPRITE_SIZE(32x64),
+    .x = 0,
+    .matrixNum = 0,
+    .shape = SPRITE_SHAPE(32x64),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0, // Same palette as held item box
+    .affineParam = 0,
+};
+
+static const union AnimCmd sSpriteAnim_AbilityBoxLeft[] = {
+    ANIMCMD_FRAME(0, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
+static const union AnimCmd sSpriteAnim_AbilityBoxLeftMiddle[] = {
+    ANIMCMD_FRAME(32, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
+static const union AnimCmd sSpriteAnim_AbilityBoxRepeating[] = {
+    ANIMCMD_FRAME(64, 0, FALSE, FALSE),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sSpriteAnimTable_AbilityBox[] = {
+    sSpriteAnim_AbilityBoxLeft,
+    sSpriteAnim_AbilityBoxLeftMiddle,
+    sSpriteAnim_AbilityBoxRepeating,
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_AbilityBox =
+{
+    .data = sAbilityBox_Gfx,
+    .size = (32 * 64 * 3) / 2,
+    .tag = TAG_ABILITY_BOX,
+};
+
+static const struct SpritePalette sSpritePal_AbilityBox =
+{
+    .data = sHeldItemBox_Pal,
+    .tag = TAG_ABILITY_BOX,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_AbilityBox =
+{
+    .tileTag = TAG_ABILITY_BOX,
+    .paletteTag = TAG_HELD_ITEM_BOX,
+    .oam = &sOamData_AbilityBox,
+    .anims = sSpriteAnimTable_AbilityBox,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+
 
 static const struct OamData sOamData_StatusCondition =
 {
@@ -2164,7 +2225,6 @@ static bool8 DecompressGraphics(void)
         sMonSummaryScreen->switchCounter++;
         break;
     case 13:
-        LoadSpritePalette(&sMoveSelectorSpritePal);
         sMonSummaryScreen->switchCounter++;
         break;
     case 14:
@@ -2211,18 +2271,28 @@ static bool8 DecompressGraphics(void)
         break;
     case 22:
         if (P_SUMMARY_SCREEN_MOVE_RELEARNER)
-        {
             LoadCompressedSpriteSheet(&sSpriteSheet_RelearnPrompt);
-            LoadCompressedSpriteSheet(&sSpriteSheet_RelearnPromptSwitch);
-            LoadCompressedSpriteSheet(&sSpriteSheet_LRButton);
-        }
         sMonSummaryScreen->switchCounter++;
         break;
     case 23:
-        LoadCompressedSpriteSheet(&sSpriteSheet_HeldItemBox);
+        if (P_SUMMARY_SCREEN_MOVE_RELEARNER)
+            LoadCompressedSpriteSheet(&sSpriteSheet_RelearnPromptSwitch);
         sMonSummaryScreen->switchCounter++;
         break;
     case 24:
+        if (P_SUMMARY_SCREEN_MOVE_RELEARNER)
+            LoadCompressedSpriteSheet(&sSpriteSheet_LRButton);
+        sMonSummaryScreen->switchCounter++;
+        break;
+    case 25:
+        LoadCompressedSpriteSheet(&sSpriteSheet_HeldItemBox);
+        sMonSummaryScreen->switchCounter++;
+        break;
+    case 26:
+        LoadCompressedSpriteSheet(&sSpriteSheet_AbilityBox);
+        sMonSummaryScreen->switchCounter++;
+        break;
+    case 27:
         LoadSpritePalette(&sSpritePal_HeldItemBox);
         sMonSummaryScreen->switchCounter = 0;
         return TRUE;
@@ -2767,7 +2837,7 @@ static void Task_ChangeSummaryMon(u8 taskId)
             gSprites[sMonSummaryScreen->spriteIds[SPRITE_ARR_ID_SHADOW]].sIsShadow = TRUE;
         }
 
-        TryDrawExperienceProgressBar();
+        // TryDrawExperienceProgressBar();
         data[1] = 0;
         break;
     case 10:
@@ -2796,6 +2866,7 @@ static void Task_ChangeSummaryMon(u8 taskId)
         else if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
         {
             DrawNextSkillsButtonPrompt(SKILL_STATE_STATS);
+            CreateAbilityBoxSprites();
         }
         break;
     case 13:
@@ -2887,6 +2958,8 @@ static void ChangePage(u8 taskId, s8 delta)
 
     PlaySE(SE_SELECT);
     ClearPageWindowTilemaps(sMonSummaryScreen->currPageIndex);
+    if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
+        DestroyAbilityBoxSprites();
 
     // Wrap around pages (after clearing the old page's tilemaps)
     if (delta == -1 && sMonSummaryScreen->currPageIndex == sMonSummaryScreen->minPageIndex)
@@ -2972,7 +3045,9 @@ static void PssScrollEnd(u8 taskId)
 
     SetTypeIcons();
     TrySetInfoPageIcons();
-    TryDrawExperienceProgressBar();
+    if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
+        CreateAbilityBoxSprites();
+    // TryDrawExperienceProgressBar();
 
     if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
     {
@@ -3484,8 +3559,8 @@ static void Task_HideEffectTilemap(u8 taskId)
 // #define EXP_BAR_HORIZONTAL_OFFSET_TILES -9  // Negative = left, positive = right
 // #define EXP_BAR_TILEMAP_START (0x1F4 + (EXP_BAR_VERTICAL_OFFSET_TILES * 32) + EXP_BAR_HORIZONTAL_OFFSET_TILES)
 #define EXP_BAR_TILEMAP_START 0x18B
-#define EXP_BAR_TILE_EMPTY    0x2150
-#define EXP_BAR_TILE_FULL     0x2158
+#define EXP_BAR_TILE_EMPTY    0x0150
+#define EXP_BAR_TILE_FULL     0x0158
 
 static void DrawExperienceProgressBar(struct Pokemon *unused)
 {
@@ -3738,7 +3813,7 @@ static void PrintPageNamesAndStats(void)
     if (iconXPos < 0)
         iconXPos = 0;
     PrintButtonIcon(PSS_LABEL_WINDOW_PROMPT_SWITCH, BUTTON_A, iconXPos, 4);
-    PrintTextOnWindowWithFont(PSS_LABEL_WINDOW_PROMPT_SWITCH, sText_Switch, stringXPos, 0, 0, 1, FONT_SMALL);
+    PrintTextOnWindowWithFont(PSS_LABEL_WINDOW_PROMPT_SWITCH, sText_Switch, stringXPos, 0, 0, 0, FONT_SMALL);
 
     if (SWSH_SUMMARY_SHOW_IV_EV)
     {
@@ -4223,7 +4298,8 @@ static void PrintSkillsPageText(void)
     PrintHPStats(SKILL_STATE_STATS);
     BufferNonHPStats();
     PrintNonHPStats();
-    PrintExpPointsNextLevel();
+    PrintMonDynamaxLevel();
+    // PrintExpPointsNextLevel();
 }
 
 // Update the task function to include stat label printing as a separate step
@@ -4255,7 +4331,8 @@ static void Task_PrintSkillsPage(u8 taskId)
         PrintNonHPStats();
         break;
     case 8:
-        PrintExpPointsNextLevel();
+        PrintMonDynamaxLevel();
+        // PrintExpPointsNextLevel();
         break;
     case 9:
         DestroyTask(taskId);
@@ -5234,11 +5311,11 @@ static void CreateHeldItemBoxSprites(void)
         if (spriteIds[i] != MAX_SPRITES)
         {
             if (i == 0)
-                StartSpriteAnim(&gSprites[spriteIds[i]], 0);  // First unique
+                StartSpriteAnim(&gSprites[spriteIds[i]], 0);
             else if (i == 1)
-                StartSpriteAnim(&gSprites[spriteIds[i]], 1);  // Second unique
+                StartSpriteAnim(&gSprites[spriteIds[i]], 1);
             else
-                StartSpriteAnim(&gSprites[spriteIds[i]], 2);  // Repeating
+                StartSpriteAnim(&gSprites[spriteIds[i]], 2);
         }
     }
 }
