@@ -39,6 +39,7 @@ enum PokemonSummaryScreenPage
     PSS_PAGE_INFO,
     PSS_PAGE_SKILLS,
     PSS_PAGE_BATTLE_MOVES,
+    PSS_PAGE_MEMO,
     PSS_PAGE_CONTEST_MOVES,
     PSS_PAGE_COUNT,
 };
@@ -55,7 +56,6 @@ void ShowSelectMovePokemonSummaryScreen(struct Pokemon *mons, u8 monIndex, u8 ma
 void ShowPokemonSummaryScreenHandleDeoxys(u8 mode, struct BoxPokemon *mons, u8 monIndex, u8 maxMonIndex, void (*callback)(void));
 u8 GetMoveSlotToReplace(void);
 void SummaryScreen_SetAnimDelayTaskId(u8 taskId);
-void ShowRelearnPrompt(void);
-void TryUpdateRelearnType(enum IncrDecrUpdateValues delta);
+bool32 CheckRelearnerStateFlag(enum MoveRelearnerStates state);
 
 #endif // GUARD_POKEMON_SUMMARY_SCREEN_H
