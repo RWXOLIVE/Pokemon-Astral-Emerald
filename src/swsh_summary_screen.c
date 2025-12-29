@@ -439,12 +439,12 @@ static const u8 sText_MintNature[]              = _("{DYNAMIC 0}{DYNAMIC 2}{DYNA
 
 // Trainer Memo page texts
 static const u8 sText_MemoNature[]              = _("{DYNAMIC 0}{DYNAMIC 2}{DYNAMIC 1}{DYNAMIC 5} by nature");
-static const u8 sText_MemoMet[]                 = _("Met when it was Lv. {DYNAMIC 1}{DYNAMIC 3}{DYNAMIC 1}\nLocation: {DYNAMIC 0}{DYNAMIC 4}{DYNAMIC 1}");
+static const u8 sText_MemoMet[]                 = _("Met when it was {LV_2}. {DYNAMIC 1}{DYNAMIC 3}{DYNAMIC 1}\nLocation: {DYNAMIC 0}{DYNAMIC 4}{DYNAMIC 1}");
 static const u8 sText_MemoHatched[]             = _("Hatched from an egg\nLocation: {DYNAMIC 0}{DYNAMIC 4}{DYNAMIC 1}");
 static const u8 sText_MemoTraded[]              = _("Met in a trade");
-static const u8 sText_MemoFateful[]             = _("Met in a fateful encounter\nat Lv. {DYNAMIC 1}{DYNAMIC 3}{DYNAMIC 1}");
-static const u8 sText_MemoProbablyMet[]         = _("Seems to have met at Lv. {DYNAMIC 1}{DYNAMIC 3}{DYNAMIC 1}\nLocation: {DYNAMIC 0}{DYNAMIC 4}{DYNAMIC 1}");
-static const u8 sText_MemoMetSomewhere[]        = _("Met somewhere at Lv. {DYNAMIC 1}{DYNAMIC 3}{DYNAMIC 1}");
+static const u8 sText_MemoFateful[]             = _("Met in a fateful encounter\nat {LV_2}. {DYNAMIC 1}{DYNAMIC 3}{DYNAMIC 1}");
+static const u8 sText_MemoProbablyMet[]         = _("Seems to have met at {LV_2}. {DYNAMIC 1}{DYNAMIC 3}{DYNAMIC 1}\nLocation: {DYNAMIC 0}{DYNAMIC 4}{DYNAMIC 1}");
+static const u8 sText_MemoMetSomewhere[]        = _("Met somewhere at {LV_2}. {DYNAMIC 1}{DYNAMIC 3}{DYNAMIC 1}");
 static const u8 sText_MemoHatchedSomewhere[]    = _("Hatched from an egg\nsomewhere.");
 
 // Characteristics
