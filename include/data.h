@@ -78,6 +78,7 @@ struct TrainerMon
     u8 dynamaxLevel:4;
     u8 padding2:4;
     u32 tags;
+    u16 preStatus;
 };
 
 #define TRAINER_PARTY(partyArray) partyArray, .partySize = ARRAY_COUNT(partyArray)

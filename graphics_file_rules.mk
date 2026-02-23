@@ -232,7 +232,7 @@ $(FONTGFXDIR)/small.latfont: $(FONTGFXDIR)/latin_small.png
 $(FONTGFXDIR)/normal.latfont: $(FONTGFXDIR)/latin_normal.png
 	$(GFX) $< $@
 
-$(FONTGFXDIR)/short.latfont: $(FONTGFXDIR)/latin_short.png
+$(FONTGFXDIR)/short.latfont: $(FONTGFXDIR)/latin_frlg_nums.png
 	$(GFX) $< $@
 
 $(FONTGFXDIR)/narrow.latfont: $(FONTGFXDIR)/latin_narrow.png
