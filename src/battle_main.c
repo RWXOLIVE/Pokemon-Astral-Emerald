@@ -4875,6 +4875,12 @@ s32 GetBattleMovePriority(u32 battler, enum Ability ability, u32 move)
     {
         priority++;
     }
+    else if (ability == ABILITY_BLAZING_SOUL
+          && (GetConfig(B_GALE_WINGS) < GEN_7 || IsBattlerAtMaxHp(battler))
+          && GetMoveType(move) == TYPE_FIRE)
+    {
+        priority++;
+    }
     else if (IsBattleMoveStatus(move) && IsAbilityAndRecord(battler, ability, ABILITY_PRANKSTER))
     {
         gProtectStructs[battler].pranksterElevated = 1;
