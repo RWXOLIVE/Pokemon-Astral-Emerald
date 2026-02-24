@@ -17,6 +17,22 @@ Route103_EventScript_OpenAlteringCave::
 	setmetatile 45, 6, METATILE_General_CaveEntrance_Bottom, FALSE
 	return
 
+
+Route103_Swede::
+	setspeaker Text_Swede
+	lock
+	faceplayer
+	msgbox FurretGoesFishing
+	release
+	end
+
+FurretCry::
+	lock
+	faceplayer
+	playmoncry SPECIES_FURRET, CRY_MODE_ENCOUNTER
+	release
+	end
+
 Route103_EventScript_Rival::
 	lockall
 	checkplayergender
@@ -351,3 +367,9 @@ Route103_Text_RouteSign:
 	.string "ROUTE 103\n"
 	.string "{DOWN_ARROW} OLDALE TOWN$"
 
+Text_Swede:
+	.string "SWEDE$"
+
+FurretGoesFishing:
+	.string "I found my Furret when it was a baby\n"
+	.string "Sentret fishing for Lotads.$"

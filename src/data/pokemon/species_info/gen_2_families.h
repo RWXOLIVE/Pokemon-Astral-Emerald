@@ -413,7 +413,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sQuilavaLevelUpLearnset,
         .teachableLearnset = sQuilavaTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_TYPHLOSION, CONDITIONS({IF_NOT_REGION, REGION_HISUI})},
-                                {EVO_LEVEL, 36, SPECIES_TYPHLOSION_HISUI, CONDITIONS({IF_IN_MAPSEC, MAPSEC_MT_PYRE})}),
+                                {EVO_LEVEL, 0, SPECIES_TYPHLOSION_HISUI, CONDITIONS({IF_IN_MAPSEC, MAPSEC_MT_PYRE})}),
     },
 
     [SPECIES_TYPHLOSION] =

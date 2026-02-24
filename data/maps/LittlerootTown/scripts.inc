@@ -242,6 +242,7 @@ LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale::
 	end
 
 LittlerootTown_EventScript_FatMan::
+	setspeaker Text_KnowledgeAble_Man
 	msgbox LittlerootTown_Text_CanUsePCToStoreItems, MSGBOX_NPC
 	end
 
@@ -954,9 +955,9 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "Go on, go get them, honey!$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
-	.string "If you use a PC, you can store items\n"
-	.string "and POKéMON.\p"
-	.string "The power of science is staggering!$"
+	.string "I'm fromt he UNOVA region, I was a\n"
+	.string "trainer like yourself.\p"
+	.string "I'm here trying to track TEAM PLASMA!$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
 	.string "PROF. BIRCH spends days in his LAB\n"
@@ -1017,3 +1018,6 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 
 Text_Mom:
 	.string "MOM$"
+
+Text_KnowledgeAble_Man:
+	.string "KNOWLEDGEABLE MAN$"
