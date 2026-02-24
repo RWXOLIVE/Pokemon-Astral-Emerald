@@ -5750,6 +5750,7 @@ bool32 IsMoxieTypeAbility(enum Ability ability)
     case ABILITY_CHILLING_NEIGH:
     case ABILITY_AS_ONE_ICE_RIDER:
     case ABILITY_GRIM_NEIGH:
+    case ABILITY_LUCHADORS_PRIDE:
     case ABILITY_AS_ONE_SHADOW_RIDER:
         return TRUE;
     default:
@@ -5805,6 +5806,9 @@ bool32 ShouldTriggerAbility(u32 battlerAtk, u32 battlerDef, enum Ability ability
         case ABILITY_SAP_SIPPER:
         case ABILITY_THERMAL_EXCHANGE:
             return (BattlerStatCanRise(battlerDef, ability, STAT_ATK) && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL));
+        
+        case ABILITY_LUCHADORS_PRIDE:
+            return (BattlerStatCanRise(battlerDef, ability, STAT_SPEED) && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL));
 
         case ABILITY_COMPETITIVE:
             return (BattlerStatCanRise(battlerDef, ability, STAT_SPATK) && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL));

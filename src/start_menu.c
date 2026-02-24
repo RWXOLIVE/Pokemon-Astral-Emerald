@@ -50,6 +50,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+static const u8 sText_GameVersion[] = _("0.1.9.9.1");
+
 // Menu actions
 enum
 {
@@ -1444,6 +1446,30 @@ static void ShowSaveInfoWindow(void)
     AddTextPrinterParameterized(sSaveInfoWindowId, FONT_NORMAL, gStringVar4, xOffset, yOffset, TEXT_SKIP_DRAW, NULL);
 
     CopyWindowToVram(sSaveInfoWindowId, COPYWIN_GFX);
+
+    
+        // Print version
+    yOffset += 16;
+    AddTextPrinterParameterized(
+        sSaveInfoWindowId,
+        FONT_NORMAL,
+        gText_SavingVersion,
+        0,
+        yOffset,
+        TEXT_SKIP_DRAW,
+        NULL
+    );
+
+    xOffset = GetStringRightAlignXOffset(FONT_NORMAL, sText_GameVersion, 0x70);
+    AddTextPrinterParameterized(
+        sSaveInfoWindowId,
+        FONT_NORMAL,
+        sText_GameVersion,
+        xOffset,
+        yOffset,
+        TEXT_SKIP_DRAW,
+        NULL
+    );
 }
 
 static void RemoveSaveInfoWindow(void)

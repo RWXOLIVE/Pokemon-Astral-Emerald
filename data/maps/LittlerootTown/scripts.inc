@@ -867,6 +867,7 @@ LittlerootTown_Movement_MomExitThroughDoor:
 	step_end
 
 LittlerootTown_EventScript_Mom::
+	setspeaker Text_Mom
 	lock
 	faceplayer
 	checkplayergender
@@ -1014,3 +1015,5 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
 
+Text_Mom:
+	.string "MOM$"

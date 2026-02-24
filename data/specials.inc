@@ -1,16 +1,9 @@
-@ 'requests_effects' should be set to 1 if the special contains a call
-@ to 'Script_RequestEffects', which allows it to be analyzed with
-@ 'RunScriptImmediatelyUntilEffect'.
-.macro def_special ptr:req, requests_effects=0
+.macro def_special ptr
 .global SPECIAL_\ptr
 .set SPECIAL_\ptr, __special__
 .set __special__, __special__ + 1
-	.if \requests_effects == 0
 	.4byte \ptr
-	.else
-	.4byte \ptr + ROM_SIZE
-	.endif
-.endm
+	.endm
 
 .set __special__, 0
 		.align 2
@@ -304,7 +297,7 @@ gSpecials::
 	def_special WaitWeather
 	def_special BufferEReaderTrainerName
 	def_special GetSlotMachineId
-	def_special GetPlayerFacingDirection, requests_effects=TRUE
+	def_special GetPlayerFacingDirection
 	def_special FoundAbandonedShipRoom1Key
 	def_special FoundAbandonedShipRoom2Key
 	def_special FoundAbandonedShipRoom4Key
@@ -560,6 +553,22 @@ gSpecials::
 	def_special Script_GetChosenMonDefensiveEVs
 	def_special Script_GetChosenMonOffensiveIVs
 	def_special Script_GetChosenMonDefensiveIVs
+	def_special SetMonStatus
+	def_special MaxHpIV
+	def_special MaxAtkIV
+	def_special MaxDefIV
+	def_special MaxSpdIV
+	def_special MaxSpAtkIV
+	def_special MaxSpDefIV
+	def_special ScriptGetPartyMonHP
+	def_special ScriptGetPartyMonAtk
+	def_special ScriptGetPartyMonDef
+	def_special ScriptGetPartyMonSpd
+	def_special ScriptGetPartyMonSpAtk
+	def_special ScriptGetPartyMonSpDef
+	def_special SetMonNature
+	def_special ScriptCheckPartyMonNature
+	def_special PreDamage
 	def_special UseBlankMessageToCancelPokemonPic
 	def_special EnterCode
 	def_special GetCodeFeedback

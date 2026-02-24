@@ -783,6 +783,36 @@ static const struct MenuAction MultichoiceList_Exit[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_ResourceNPC[] =
+{
+    {gText_NPCStatus},
+    {gText_NPCDamage},
+    {gText_NPCIV},
+    {gText_NPCNature},
+    {gText_NPCNickname},
+    {gText_NPCInformation},
+};
+
+static const struct MenuAction MultichoiceList_ResourceNPC_Status[] =
+{
+    {gText_NPCBurn},
+    {gText_NPCFreeze},
+    {gText_NPCPoison},
+    {gText_NPCParalysis},
+    {gText_NPCSleep},
+    {gText_NPCFrostbite},
+};
+
+static const struct MenuAction MultichoiceList_ResourceNPC_IVS[] =
+{
+    {gText_NPCHp},
+    {gText_NPCAtk},
+    {gText_NPCDef},
+    {gText_NPCSpAtk},
+    {gText_NPCSpDef},
+    {gText_NPCSpd},
+};
+
 struct MultichoiceListStruct
 {
     const struct MenuAction *list;
@@ -906,6 +936,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
+    [MULTI_RESOURCE_NPC]               = MULTICHOICE(MultichoiceList_ResourceNPC),
+    [MULTI_PRESTATUS]                  = MULTICHOICE(MultichoiceList_ResourceNPC_Status),
+    [MULTI_IVS]                        = MULTICHOICE(MultichoiceList_ResourceNPC_IVS),
 };
 
 const u8 *const gStdStrings[] =

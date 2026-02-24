@@ -5732,6 +5732,7 @@ static bool32 HandleMoveEndAbilityBlock(u32 battlerAtk, u32 battlerDef, u32 move
         }
         break;
     case ABILITY_MOXIE:
+    case ABILITY_LUCHADORS_PRIDE:
     case ABILITY_CHILLING_NEIGH:
     case ABILITY_AS_ONE_ICE_RIDER:
     case ABILITY_GRIM_NEIGH:

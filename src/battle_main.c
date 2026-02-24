@@ -4785,6 +4785,8 @@ u32 GetBattlerTotalSpeedStat(u32 battler, enum Ability ability, enum HoldEffect 
             speed *= 2;
         else if (ability == ABILITY_CHLOROPHYLL && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA && gBattleWeather & B_WEATHER_SUN)
             speed *= 2;
+        else if (ability == ABILITY_HEATED_RUSH && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA && gBattleWeather & B_WEATHER_SUN)
+            speed *= 2;
         else if (ability == ABILITY_SAND_RUSH   && gBattleWeather & B_WEATHER_SANDSTORM)
             speed *= 2;
         else if (ability == ABILITY_SLUSH_RUSH  && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)))
@@ -6075,6 +6077,12 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum Mo
     {
         return TYPE_WATER;
     }
+
+    if (IsSoundMove(move) && ability == ABILITY_ECHOING_ALLOY)
+    {
+        return TYPE_STEEL;
+    }
+
     else if (moveEffect == EFFECT_AURA_WHEEL
           && species == SPECIES_MORPEKO_HANGRY
           && ability != ABILITY_NORMALIZE)

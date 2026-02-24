@@ -13,7 +13,7 @@ struct Berry
     u16 weedsBonus:3;
     u16 pestsBonus:3;
     u8 maxYield;
-    u8 minYield:4;
+    u8 minYield;
     u8 waterBonus:4;
     const u8 *description1;
     const u8 *description2;
@@ -38,7 +38,7 @@ struct Berry2
     u16 weedsBonus:3;
     u16 pestsBonus:3;
     u8 maxYield;
-    u8 minYield:4;
+    u8 minYield;
     u8 waterBonus:4;
     u8 *description1;
     u8 *description2;
@@ -78,7 +78,7 @@ struct BerryTree
     u8 stopGrowth:1;
     u16 minutesUntilNextStage:14;
     u16 mutationA:2;
-    u8 berryYield:5;
+    u8 berryYield;
     u8 pests:1;
     u8 mutationB:2;
     u8 regrowthCount:4;

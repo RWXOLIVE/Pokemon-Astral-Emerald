@@ -2412,4 +2412,86 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
     },
+    [ABILITY_FLORAL_PAYLOAD] =
+    {
+        .name = _("Floral Payload"),
+        .description = COMPOUND_STRING("Powers up Grass moves."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_HEART_BOOST] =
+    {
+        .name = _("Heart Boost"),
+        .description = COMPOUND_STRING("Ups Sp. Atk if suffering."),
+        .aiRating = 5,
+    },
+
+    [ABILITY_INFESTATE] =
+    {
+        .name = _("Infestate"),
+        .description = COMPOUND_STRING("Normal moves become Bug."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_LUNAR_VEIL] =
+    {
+        .name = _("Lunar Veil"),
+        .description = COMPOUND_STRING("Boosts Ghost and Dark moves."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_SOLAR_VEIL] =
+    {
+        .name = _("Solar Veil"),
+        .description = COMPOUND_STRING("Boosts Fire and Ground moves."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_BLAZING_SOUL] =
+    {
+        .name = _("Blazing Soul"),
+        .description = COMPOUND_STRING("Fire moves go first."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_GRIT] =
+    {
+        .name = _("Grit"),
+        .description = COMPOUND_STRING("Ups Fighting moves in a pinch."),
+        .aiRating = 5,
+    },
+
+    [ABILITY_SHROUD] =
+    {
+        .name = _("Shroud"),
+        .description = COMPOUND_STRING("Ups Dark moves in a pinch."),
+        .aiRating = 5,
+    },
+
+    [ABILITY_LUCID] =
+    {
+        .name = _("Lucid"),
+        .description = COMPOUND_STRING("Ups Psychic moves in a pinch."),
+        .aiRating = 5,
+    },
+
+    [ABILITY_STRIKER] =
+    {
+        .name = _("Striker"),
+        .description = COMPOUND_STRING("Boosts kicking moves."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_HEATED_RUSH] =
+    {
+        .name = _("Heated Rush"),
+        .description = COMPOUND_STRING("Boosts Speed in sun."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_LUCHADORS_PRIDE] =
+    {
+        .name = _("Luchador's Pride"),
+        .description = COMPOUND_STRING("KOs raise Speed."),
+        .aiRating = 7,    },
 };

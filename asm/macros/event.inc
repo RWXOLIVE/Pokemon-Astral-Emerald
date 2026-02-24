@@ -2710,3 +2710,25 @@
 	callnative ScrCmd_istmrelearneractive, requests_effects=1
 	.4byte \destination
 	.endm
+
+	@ Changes the status of a selected Pokémon
+    .macro setmonstatus status:req
+    setvar VAR_TEMP_1, \status
+    special SetMonStatus
+    .endm	
+
+    @ Changes the nature of a selected Pokémon
+    .macro setmonnature nature:req
+    setvar VAR_TEMP_1, \nature
+    special SetMonNature
+    .endm
+
+	.macro scrollingmultichoice id:req, x:req, y:req, show:req, b:req
+	setvar VAR_0x800B, \id,
+	setvar VAR_0x8005, \x,
+	setvar VAR_0x8006, \y,
+	setvar VAR_0x8007, \show,
+	setvar VAR_0x8008, \b,
+	callnative ScriptMenu_ScrollingMultichoice
+	waitstate
+	.endm

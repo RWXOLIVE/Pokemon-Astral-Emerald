@@ -2,29 +2,29 @@
 #define GUARD_CONSTANTS_TMS_HMS_H
 
 #define FOREACH_TM(F) \
-    F(FOCUS_PUNCH) \
+    F(PSYCHIC_NOISE) \
     F(DRAGON_CLAW) \
-    F(WATER_PULSE) \
-    F(CALM_MIND) \
-    F(ROAR) \
-    F(TOXIC) \
-    F(HAIL) \
-    F(BULK_UP) \
+    F(FLAME_CHARGE) \
+    F(EARTH_POWER) \
+    F(DRAGON_TAIL) \
+    F(ICICLE_SPEAR) \
+    F(LIFE_DEW) \
+    F(DRAIN_PUNCH) \
     F(BULLET_SEED) \
     F(HIDDEN_POWER) \
-    F(SUNNY_DAY) \
-    F(TAUNT) \
+    F(NATURAL_GIFT) \
+    F(STEEL_WING) \
     F(ICE_BEAM) \
     F(BLIZZARD) \
     F(HYPER_BEAM) \
-    F(LIGHT_SCREEN) \
-    F(PROTECT) \
-    F(RAIN_DANCE) \
+    F(GIGA_IMPACT) \
+    F(BULLDOZE) \
+    F(FOCUS_ENERGY) \
     F(GIGA_DRAIN) \
-    F(SAFEGUARD) \
-    F(FRUSTRATION) \
+    F(WILL_O_WISP) \
+    F(DEFOG) \
     F(SOLAR_BEAM) \
-    F(IRON_TAIL) \
+    F(ROCK_SLIDE) \
     F(THUNDERBOLT) \
     F(THUNDER) \
     F(EARTHQUAKE) \
@@ -33,25 +33,58 @@
     F(PSYCHIC) \
     F(SHADOW_BALL) \
     F(BRICK_BREAK) \
-    F(DOUBLE_TEAM) \
-    F(REFLECT) \
+    F(GRASS_KNOT) \
+    F(STEEL_BEAM) \
     F(SHOCK_WAVE) \
     F(FLAMETHROWER) \
     F(SLUDGE_BOMB) \
-    F(SANDSTORM) \
+    F(MIST) \
     F(FIRE_BLAST) \
     F(ROCK_TOMB) \
-    F(AERIAL_ACE) \
-    F(TORMENT) \
+    F(SWAGGER) \
+    F(SCALE_SHOT) \
     F(FACADE) \
     F(SECRET_POWER) \
-    F(REST) \
-    F(ATTRACT) \
-    F(THIEF) \
-    F(STEEL_WING) \
-    F(SKILL_SWAP) \
+    F(ROLE_PLAY) \
+    F(ROCK_BLAST) \
+    F(TORMENT) \
+    F(SMART_STRIKE) \
+    F(MAGICAL_LEAF) \
     F(SNATCH) \
-    F(OVERHEAT)
+    F(OVERHEAT) \
+    F(AERIAL_ACE) \
+    F(ELECTROWEB) \
+    F(SMACK_DOWN) \
+    F(TAILWIND) \
+    F(FIRE_PUNCH) \
+    F(THUNDER_PUNCH) \
+    F(ICE_PUNCH) \
+    F(MEGA_PUNCH) \
+    F(POISON_JAB) \
+    F(SHADOW_PUNCH) \
+    F(TEMPER_FLARE) \
+    F(STOMPING_TANTRUM) \
+    F(CHILLING_WATER) \
+    F(ICY_WIND) \
+    F(HYPER_VOICE) \
+    F(SOLAR_BLADE) \
+    F(WEATHER_BALL) \
+    F(NIGHT_SHADE) \
+    F(PARABOLIC_CHARGE) \
+    F(NATURE_POWER) \
+    F(CURSE) \
+    F(TRAILBLAZE) \
+    F(POUNCE) \
+    F(FIRE_FANG) \
+    F(ICE_FANG) \
+    F(THUNDER_FANG) \
+    F(POISON_FANG) \
+    F(LEECH_LIFE) \
+    F(IRON_TAIL) \
+    F(THUNDER_WAVE) \
+    F(LOW_SWEEP) \
+    F(MUD_SHOT) \
+    F(COVET) \
 
 #define FOREACH_HM(F) \
     F(CUT) \

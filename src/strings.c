@@ -1116,6 +1116,7 @@ const u8 gText_SamePkmnInPartyAlready[] = _("Same {PKMN} in party already.");
 const u8 gText_DecimalPoint[] = _(".");
 const u8 gText_SavingPlayer[] = _("PLAYER");
 const u8 gText_SavingBadges[] = _("BADGES");
+const u8 gText_SavingVersion[] = _("VERSION");
 const u8 gText_SavingPokedex[] = _("POKéDEX");
 const u8 gText_SavingTime[] = _("TIME");
 const u8 gText_WirelessCommStatus[] = _("Wireless Communication Status");
@@ -1287,3 +1288,27 @@ const u8 gText_Rename[] = _("RENAME");
 const u8 gText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}");
 const u8 gText_CannotSendMonToBoxActive[] = _("Cannot send an active battler\nto the box.{PAUSE_UNTIL_PRESS}");
 const u8 gText_CannotSendMonToBoxPartner[] = _("Cannot send a mon that doesn't,\nbelong to you to the box.{PAUSE_UNTIL_PRESS}");
+const u8 gText_InfiniteRepelOn[] = _("The Infinite Repel is now ACTIVATED!\n Wild Pokemon will be repelled!{PAUSE_UNTIL_PRESS}");
+const u8 gText_InfiniteRepelOff[] = _("The Infinite Repel is now DEACTIVATED!\n Wild Pokemon will appear!{PAUSE_UNTIL_PRESS}");
+
+//resource npc
+
+//ResourceNPC
+const u8 gText_NPCStatus[] = _("Status");
+const u8 gText_NPCDamage[] = _("PreDamage");
+const u8 gText_NPCIV[] = _("Maximize IV");
+const u8 gText_NPCNature[] = _("Change Nature");
+const u8 gText_NPCNickname[] = _("Nickname");
+const u8 gText_NPCInformation[] = _("Information");
+const u8 gText_NPCBurn[] = _("Burn");
+const u8 gText_NPCFreeze[] = _("Freeze");
+const u8 gText_NPCPoison[] = _("Poison");
+const u8 gText_NPCParalysis[] = _("Paralysis");
+const u8 gText_NPCSleep[] = _("Sleep");
+const u8 gText_NPCFrostbite[] = _("Frostbite");
+const u8 gText_NPCHp[] = _("HP");
+const u8 gText_NPCAtk[] = _("Attack");
+const u8 gText_NPCDef[] = _("Defense");
+const u8 gText_NPCSpAtk[] = _("Sp.Atk");
+const u8 gText_NPCSpDef[] = _("Sp.Def");
+const u8 gText_NPCSpd[] = _("Speed");

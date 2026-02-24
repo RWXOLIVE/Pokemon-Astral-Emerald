@@ -101,7 +101,7 @@ Now, to better understand Mewthree, we also need to understand Mew. Let's look a
     #else
         .expYield = 64,
     #endif
-        .evYield_HP = 3,
+        
         .itemCommon = ITEM_LUM_BERRY,
         .itemRare = ITEM_LUM_BERRY,
         .genderRatio = MON_GENDERLESS,

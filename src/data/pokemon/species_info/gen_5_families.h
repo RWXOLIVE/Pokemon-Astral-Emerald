@@ -15,7 +15,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FIRE),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
-        .evYield_HP = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
         .friendship = 100,
@@ -87,7 +87,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 45,
         .expYield = 62,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -156,7 +156,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 45,
         .expYield = 145,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -228,7 +228,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 264 : 238,
-        .evYield_Speed = 3,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -299,7 +299,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIRE),
         .catchRate = 45,
         .expYield = 62,
-        .evYield_HP = 1,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -370,7 +370,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIRE, TYPE_FIGHTING),
         .catchRate = 45,
         .expYield = 146,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -438,7 +438,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIRE, TYPE_FIGHTING),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 264 : 238,
-        .evYield_Attack = 3,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -528,7 +528,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIRE, TYPE_FIGHTING),
         .catchRate = 45,
         .expYield = 264,
-        .evYield_Attack = 3,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -585,7 +585,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 45,
         .expYield = 62,
-        .evYield_SpAttack = 1,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -658,7 +658,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 45,
         .expYield = 145,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -729,7 +729,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 264 : 238,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -797,7 +797,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_DARK),
         .catchRate = 45,
         .expYield = 264,
-        .evYield_Attack = 3,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -865,7 +865,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 255,
         .expYield = 51,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -933,7 +933,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 255,
         .expYield = 147,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1006,7 +1006,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 255,
         .expYield = 55,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1079,7 +1079,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 120,
         .expYield = 130,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1156,7 +1156,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     #else
         .expYield = 221,
     #endif
-        .evYield_Attack = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1227,7 +1227,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK),
         .catchRate = 255,
         .expYield = 56,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1296,7 +1296,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK),
         .catchRate = 90,
         .expYield = 156,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1365,7 +1365,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 190,
         .expYield = 63,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1436,7 +1436,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 75,
         .expYield = 174,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1505,7 +1505,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIRE),
         .catchRate = 190,
         .expYield = 63,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1574,7 +1574,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIRE),
         .catchRate = 75,
         .expYield = 174,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1646,7 +1646,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 190,
         .expYield = 63,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1715,7 +1715,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 75,
         .expYield = 174,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1783,7 +1783,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 190,
         .expYield = 58,
-        .evYield_HP = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 10,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1858,7 +1858,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 75,
         .expYield = 170,
-        .evYield_HP = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 10,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1930,7 +1930,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_FLYING),
         .catchRate = 255,
         .expYield = 53,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -1999,7 +1999,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_FLYING),
         .catchRate = 120,
         .expYield = 125,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -2073,7 +2073,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     #else
         .expYield = 215,
     #endif
-        .evYield_Attack = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -2161,7 +2161,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 190,
         .expYield = 59,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -2233,7 +2233,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 75,
         .expYield = 174,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -2302,7 +2302,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ROCK),
         .catchRate = 255,
         .expYield = 56,
-        .evYield_Defense = 1,
+        
         .itemCommon = ITEM_EVERSTONE,
         .itemRare = ITEM_HARD_STONE,
         .genderRatio = PERCENT_FEMALE(50),
@@ -2377,8 +2377,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ROCK),
         .catchRate = 120,
         .expYield = 137,
-        .evYield_Attack = 1,
-        .evYield_Defense = 1,
+        
+        
         .itemCommon = ITEM_EVERSTONE,
         .itemRare = ITEM_HARD_STONE,
         .genderRatio = PERCENT_FEMALE(50),
@@ -2462,7 +2462,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     #else
         .expYield = 227,
     #endif
-        .evYield_Attack = 3,
+        
         .itemCommon = ITEM_EVERSTONE,
         .itemRare = ITEM_HARD_STONE,
         .genderRatio = PERCENT_FEMALE(50),
@@ -2537,7 +2537,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FLYING),
         .catchRate = 190,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_7) ? 65 : 63,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -2623,7 +2623,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FLYING),
         .catchRate = 45,
         .expYield = 149,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -2696,7 +2696,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND),
         .catchRate = 120,
         .expYield = 66,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -2768,7 +2768,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_STEEL),
         .catchRate = 60,
         .expYield = 178,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -2840,7 +2840,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_STEEL),
         .catchRate = 60,
         .expYield = 178,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -2897,7 +2897,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 255,
         .expYield = 390,
-        .evYield_HP = 2,
+        
         .itemCommon = ITEM_ORAN_BERRY,
         .itemRare = ITEM_SITRUS_BERRY,
         .genderRatio = PERCENT_FEMALE(50),
@@ -2970,7 +2970,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_FAIRY),
         .catchRate = 255,
         .expYield = 425,
-        .evYield_HP = 2,
+        
         .itemCommon = ITEM_ORAN_BERRY,
         .itemRare = ITEM_SITRUS_BERRY,
         .genderRatio = PERCENT_FEMALE(50),
@@ -3044,7 +3044,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIGHTING),
         .catchRate = 180,
         .expYield = 61,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(25),
         .eggCycles = 20,
         .friendship = 70,
@@ -3113,7 +3113,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIGHTING),
         .catchRate = 90,
         .expYield = 142,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(25),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -3186,7 +3186,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIGHTING),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 253 : 227,
-        .evYield_Attack = 3,
+        
         .genderRatio = PERCENT_FEMALE(25),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -3254,7 +3254,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 255,
         .expYield = 59,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -3322,7 +3322,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_GROUND),
         .catchRate = 120,
         .expYield = 134,
-        .evYield_HP = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -3398,7 +3398,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     #else
         .expYield = 225,
     #endif
-        .evYield_HP = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -3471,7 +3471,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIGHTING),
         .catchRate = 45,
         .expYield = 163,
-        .evYield_HP = 2,
+        
         .itemRare = ITEM_BLACK_BELT,
         .genderRatio = MON_MALE,
         .eggCycles = 20,
@@ -3542,7 +3542,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIGHTING),
         .catchRate = 45,
         .expYield = 163,
-        .evYield_Attack = 2,
+        
         .itemRare = ITEM_BLACK_BELT,
         .genderRatio = MON_MALE,
         .eggCycles = 20,
@@ -3612,7 +3612,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_GRASS),
         .catchRate = 255,
         .expYield = 62,
-        .evYield_Defense = 1,
+        
         .itemRare = ITEM_MENTAL_HERB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
@@ -3684,7 +3684,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_GRASS),
         .catchRate = 120,
         .expYield = 133,
-        .evYield_Defense = 2,
+        
         .itemRare = ITEM_MENTAL_HERB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
@@ -3760,7 +3760,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     #else
         .expYield = 221,
     #endif
-        .evYield_Attack = 3,
+        
         .itemRare = ITEM_MENTAL_HERB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
@@ -3830,7 +3830,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_POISON),
         .catchRate = 255,
         .expYield = 52,
-        .evYield_Defense = 1,
+        
         .itemRare = ITEM_POISON_BARB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
@@ -3908,7 +3908,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_POISON),
         .catchRate = 120,
         .expYield = 126,
-        .evYield_Defense = 2,
+        
         .itemRare = ITEM_POISON_BARB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
@@ -3990,7 +3990,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     #else
         .expYield = 214,
     #endif
-        .evYield_Speed = 3,
+        
         .itemRare = ITEM_POISON_BARB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -4064,7 +4064,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_POISON),
         .catchRate = 45,
         .expYield = 243,
-        .evYield_Speed = 3,
+        
         .itemRare = ITEM_POISON_BARB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -4122,7 +4122,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS, COTTONEE_FAMILY_TYPE2),
         .catchRate = 190,
         .expYield = 56,
-        .evYield_Speed = 1,
+        
         .itemRare = ITEM_ABSORB_BULB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -4198,7 +4198,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS, COTTONEE_FAMILY_TYPE2),
         .catchRate = 75,
         .expYield = 168,
-        .evYield_Speed = 2,
+        
         .itemRare = ITEM_ABSORB_BULB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -4268,7 +4268,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 190,
         .expYield = 56,
-        .evYield_SpAttack = 1,
+        
         .itemRare = ITEM_ABSORB_BULB,
         .genderRatio = MON_FEMALE,
         .eggCycles = 20,
@@ -4342,7 +4342,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 75,
         .expYield = 168,
-        .evYield_SpAttack = 2,
+        
         .itemRare = ITEM_ABSORB_BULB,
         .genderRatio = MON_FEMALE,
         .eggCycles = 20,
@@ -4413,8 +4413,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS, TYPE_FIGHTING),
         .catchRate = 75,
         .expYield = 168,
-        .evYield_Attack = 1,
-        .evYield_Speed = 1,
+        
+        
         .itemRare = ITEM_ABSORB_BULB,
         .genderRatio = MON_FEMALE,
         .eggCycles = 20,
@@ -4484,7 +4484,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 190,
         .expYield = 161,
-        .evYield_Speed = 2,
+        
         .itemRare = ITEM_DEEP_SEA_TOOTH,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
@@ -4551,7 +4551,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 190,
         .expYield = 161,
-        .evYield_Speed = 2,
+        
         .itemRare = ITEM_DEEP_SEA_SCALE,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
@@ -4619,7 +4619,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 190,
         .expYield = 161,
-        .evYield_Speed = 2,
+        
         .itemRare = ITEM_DEEP_SEA_SCALE,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
@@ -4688,7 +4688,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_GHOST),
         .catchRate = 45,
         .expYield = 265,
-        .evYield_HP = 3,
+        
         .genderRatio = MON_MALE,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4737,7 +4737,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_BasculegionM,
             gShinyOverworldPalette_BasculegionM
         )
-        .levelUpLearnset = sBasculegionLevelUpLearnset,
+        .levelUpLearnset = sBasculegionMaleLevelUpLearnset,
         .teachableLearnset = sBasculegionTeachableLearnset,
         .formSpeciesIdTable = sBasculegionFormSpeciesIdTable,
     },
@@ -4753,7 +4753,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_GHOST),
         .catchRate = 45,
         .expYield = 265,
-        .evYield_HP = 3,
+        
         .genderRatio = MON_FEMALE,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4801,7 +4801,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_BasculegionF,
             gShinyOverworldPalette_BasculegionF
         )
-        .levelUpLearnset = sBasculegionLevelUpLearnset,
+        .levelUpLearnset = sBasculegionFemaleLevelUpLearnset,
         .teachableLearnset = sBasculegionTeachableLearnset,
         .formSpeciesIdTable = sBasculegionFormSpeciesIdTable,
     },
@@ -4820,7 +4820,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_DARK),
         .catchRate = 180,
         .expYield = 58,
-        .evYield_Attack = 1,
+        
         .itemRare = ITEM_BLACK_GLASSES,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -4890,7 +4890,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_DARK),
         .catchRate = 90,
         .expYield = 123,
-        .evYield_Attack = 2,
+        
         .itemRare = ITEM_BLACK_GLASSES,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -4964,7 +4964,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     #else
         .expYield = 229,
     #endif
-        .evYield_Attack = 3,
+        
         .itemCommon = ITEM_BLACK_GLASSES,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -5036,7 +5036,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIRE),
         .catchRate = 120,
         .expYield = 63,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -5106,7 +5106,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIRE),
         .catchRate = 60,
         .expYield = 168,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -5176,7 +5176,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIRE, TYPE_PSYCHIC),
         .catchRate = 60,
         .expYield = 189,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -5235,7 +5235,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ICE),
         .catchRate = 120,
         .expYield = 63,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -5302,7 +5302,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ICE),
         .catchRate = 60,
         .expYield = 168,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -5368,7 +5368,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ICE, TYPE_FIRE),
         .catchRate = 60,
         .expYield = 189,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -5429,7 +5429,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 255,
         .expYield = 161,
-        .evYield_SpAttack = 2,
+        
         .itemRare = ITEM_MIRACLE_SEED,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -5504,7 +5504,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_ROCK),
         .catchRate = 190,
         .expYield = 65,
-        .evYield_Defense = 1,
+        
         .itemRare = ITEM_HARD_STONE,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -5580,7 +5580,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_ROCK),
         .catchRate = 75,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_7) ? 170 : 166,
-        .evYield_Defense = 2,
+        
         .itemRare = ITEM_HARD_STONE,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -5653,7 +5653,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_FIGHTING),
         .catchRate = 180,
         .expYield = 70,
-        .evYield_Attack = 1,
+        
         .itemRare = ITEM_SHED_SHELL,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
@@ -5723,8 +5723,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_FIGHTING),
         .catchRate = 90,
         .expYield = 171,
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 1,
+        
+        
         .itemRare = ITEM_SHED_SHELL,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
@@ -5795,8 +5795,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_FIGHTING),
         .catchRate = 90,
         .expYield = 171,
-        .evYield_Defense = 1,
-        .evYield_SpDefense = 1,
+        
+        
         .itemRare = ITEM_SHED_SHELL,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
@@ -5853,7 +5853,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FLYING),
         .catchRate = 45,
         .expYield = 172,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -5929,7 +5929,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GHOST),
         .catchRate = 190,
         .expYield = 61,
-        .evYield_Defense = 1,
+        
         .itemRare = ITEM_SPELL_TAG,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 25,
@@ -6003,7 +6003,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GHOST),
         .catchRate = 90,
         .expYield = 169,
-        .evYield_Defense = 2,
+        
         .itemRare = ITEM_SPELL_TAG,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 25,
@@ -6072,7 +6072,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_GHOST),
         .catchRate = 190,
         .expYield = 61,
-        .evYield_Defense = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 25,
         .friendship = STANDARD_FRIENDSHIP,
@@ -6141,7 +6141,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_GHOST),
         .catchRate = 90,
         .expYield = 169,
-        .evYield_Defense = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 25,
         .friendship = STANDARD_FRIENDSHIP,
@@ -6208,7 +6208,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_ROCK),
         .catchRate = 45,
         .expYield = 71,
-        .evYield_Defense = 1,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 30,
         .friendship = STANDARD_FRIENDSHIP,
@@ -6278,7 +6278,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_ROCK),
         .catchRate = 45,
         .expYield = 173,
-        .evYield_Defense = 2,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 30,
         .friendship = STANDARD_FRIENDSHIP,
@@ -6354,7 +6354,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ROCK, TYPE_FLYING),
         .catchRate = 45,
         .expYield = 71,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 30,
         .friendship = STANDARD_FRIENDSHIP,
@@ -6423,7 +6423,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ROCK, TYPE_FLYING),
         .catchRate = 45,
         .expYield = 177,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 30,
         .friendship = STANDARD_FRIENDSHIP,
@@ -6498,7 +6498,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_POISON),
         .catchRate = 190,
         .expYield = 66,
-        .evYield_Speed = 1,
+        
         .itemRare = ITEM_SILK_SCARF,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -6568,7 +6568,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_POISON),
         .catchRate = 60,
         .expYield = 166,
-        .evYield_Attack = 2,
+        
         .itemCommon = ITEM_SILK_SCARF,
         .itemRare = ITEM_BLACK_SLUDGE,
         .genderRatio = PERCENT_FEMALE(50),
@@ -6641,7 +6641,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_POISON),
         .catchRate = 60,
         .expYield = 166,
-        .evYield_Attack = 2,
+        
         .itemCommon = ITEM_SILK_SCARF,
         .itemRare = ITEM_BLACK_SLUDGE,
         .genderRatio = PERCENT_FEMALE(50),
@@ -6704,7 +6704,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK),
         .catchRate = 75,
         .expYield = 66,
-        .evYield_SpAttack = 1,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 25,
         .friendship = STANDARD_FRIENDSHIP,
@@ -6776,7 +6776,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK),
         .catchRate = 45,
         .expYield = 179,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -6847,7 +6847,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_GHOST),
         .catchRate = 75,
         .expYield = 66,
-        .evYield_SpAttack = 1,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 25,
         .friendship = STANDARD_FRIENDSHIP,
@@ -6913,7 +6913,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_GHOST),
         .catchRate = 45,
         .expYield = 179,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -6982,7 +6982,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 255,
         .expYield = 60,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(75),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7051,7 +7051,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 60,
         .expYield = 165,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(75),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7122,7 +7122,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 200,
         .expYield = 58,
-        .evYield_SpDefense = 1,
+        
         .genderRatio = PERCENT_FEMALE(75),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7196,7 +7196,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 100,
         .expYield = 137,
-        .evYield_SpDefense = 2,
+        
         .genderRatio = PERCENT_FEMALE(75),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7270,7 +7270,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 50,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 245 : 221,
-        .evYield_SpDefense = 3,
+        
         .genderRatio = PERCENT_FEMALE(75),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7344,7 +7344,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 200,
         .expYield = 58,
-        .evYield_SpAttack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7416,7 +7416,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 100,
         .expYield = 130,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7486,7 +7486,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 50,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 245 : 221,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7558,7 +7558,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_FLYING),
         .catchRate = 190,
         .expYield = 61,
-        .evYield_HP = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7631,7 +7631,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_FLYING),
         .catchRate = 45,
         .expYield = 166,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7699,7 +7699,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ICE),
         .catchRate = 255,
         .expYield = 61,
-        .evYield_SpAttack = 1,
+        
         .itemRare = ITEM_NEVER_MELT_ICE,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -7775,7 +7775,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ICE),
         .catchRate = 120,
         .expYield = 138,
-        .evYield_SpAttack = 2,
+        
         .itemRare = ITEM_NEVER_MELT_ICE,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -7848,7 +7848,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ICE),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 268 : 241,
-        .evYield_SpAttack = 3,
+        
         .itemCommon = ITEM_NEVER_MELT_ICE,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -7923,7 +7923,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_GRASS),
         .catchRate = 190,
         .expYield = 67,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7989,7 +7989,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_GRASS),
         .catchRate = 190,
         .expYield = 67,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8055,7 +8055,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_GRASS),
         .catchRate = 190,
         .expYield = 67,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8121,7 +8121,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_GRASS),
         .catchRate = 190,
         .expYield = 67,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8187,7 +8187,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_GRASS),
         .catchRate = 75,
         .expYield = 166,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8251,7 +8251,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_GRASS),
         .catchRate = 75,
         .expYield = 166,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8315,7 +8315,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_GRASS),
         .catchRate = 75,
         .expYield = 166,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8379,7 +8379,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_GRASS),
         .catchRate = 75,
         .expYield = 166,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8446,7 +8446,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FLYING),
         .catchRate = 200,
         .expYield = 150,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8518,7 +8518,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG),
         .catchRate = 200,
         .expYield = 63,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8586,7 +8586,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_STEEL),
         .catchRate = 75,
         .expYield = 173,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8655,7 +8655,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS, TYPE_POISON),
         .catchRate = 190,
         .expYield = 59,
-        .evYield_HP = 1,
+        
         .itemCommon = ITEM_TINY_MUSHROOM,
         .itemRare = ITEM_BIG_MUSHROOM,
         .genderRatio = PERCENT_FEMALE(50),
@@ -8728,7 +8728,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS, TYPE_POISON),
         .catchRate = 75,
         .expYield = 162,
-        .evYield_HP = 2,
+        
         .itemCommon = ITEM_TINY_MUSHROOM,
         .itemRare = ITEM_BIG_MUSHROOM,
         .genderRatio = PERCENT_FEMALE(50),
@@ -8803,7 +8803,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_GHOST),
         .catchRate = 190,
         .expYield = 67,
-        .evYield_SpDefense = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8892,7 +8892,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_GHOST),
         .catchRate = 60,
         .expYield = 168,
-        .evYield_SpDefense = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -8982,7 +8982,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 75,
         .expYield = 165,
-        .evYield_HP = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9052,7 +9052,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_ELECTRIC),
         .catchRate = 190,
         .expYield = 64,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9123,7 +9123,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_ELECTRIC),
         .catchRate = 75,
         .expYield = 165,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9197,7 +9197,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS, TYPE_STEEL),
         .catchRate = 255,
         .expYield = 61,
-        .evYield_Defense = 1,
+        
         .itemRare = ITEM_STICKY_BARB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -9269,7 +9269,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS, TYPE_STEEL),
         .catchRate = 90,
         .expYield = 171,
-        .evYield_Defense = 2,
+        
         .itemRare = ITEM_STICKY_BARB,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -9346,7 +9346,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_STEEL),
         .catchRate = 130,
         .expYield = 60,
-        .evYield_Defense = 1,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9417,7 +9417,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_STEEL),
         .catchRate = 60,
         .expYield = 154,
-        .evYield_Defense = 2,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9488,7 +9488,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_STEEL),
         .catchRate = 30,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 260 : 234,
-        .evYield_Defense = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9560,7 +9560,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 190,
         .expYield = 55,
-        .evYield_Speed = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9643,7 +9643,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 60,
         .expYield = 142,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9714,7 +9714,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 30,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 258 : 232,
-        .evYield_Attack = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9788,7 +9788,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 30,
         .expYield = 258 ,
-        .evYield_Attack = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9844,7 +9844,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 255,
         .expYield = 67,
-        .evYield_SpAttack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9918,7 +9918,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 90,
         .expYield = 170,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -9986,7 +9986,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GHOST, TYPE_FIRE),
         .catchRate = 190,
         .expYield = 55,
-        .evYield_SpAttack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -10061,7 +10061,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GHOST, TYPE_FIRE),
         .catchRate = 90,
         .expYield = 130,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -10135,7 +10135,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GHOST, TYPE_FIRE),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 260 : 234,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -10210,7 +10210,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GHOST, TYPE_FIRE),
         .catchRate = 45,
         .expYield = 260,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -10267,7 +10267,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DRAGON),
         .catchRate = 75,
         .expYield = 64,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
         .friendship = 35,
@@ -10335,7 +10335,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DRAGON),
         .catchRate = 60,
         .expYield = 144,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
         .friendship = 35,
@@ -10402,7 +10402,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DRAGON),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 270 : 243,
-        .evYield_Attack = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
         .friendship = 35,
@@ -10472,7 +10472,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ICE),
         .catchRate = 120,
         .expYield = 61,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -10545,7 +10545,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ICE),
         .catchRate = 60,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_7) ? 177 : 170,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -10619,7 +10619,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ICE),
         .catchRate = 25,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_7) ? 180 : 170,
-        .evYield_SpDefense = 2,
+        
         .itemRare = ITEM_NEVER_MELT_ICE,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 25,
@@ -10692,7 +10692,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG),
         .catchRate = 200,
         .expYield = 61,
-        .evYield_Defense = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -10763,7 +10763,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG),
         .catchRate = 75,
         .expYield = 173,
-        .evYield_Speed = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -10831,7 +10831,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_ELECTRIC),
         .catchRate = 75,
         .expYield = 165,
-        .evYield_HP = 2,
+        
         .itemRare = ITEM_SOFT_SAND,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -10901,7 +10901,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_STEEL),
         .catchRate = 75,
         .expYield = 165,
-        .evYield_HP = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -10971,7 +10971,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIGHTING),
         .catchRate = 180,
         .expYield = 70,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 25,
         .friendship = STANDARD_FRIENDSHIP,
@@ -11039,7 +11039,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIGHTING),
         .catchRate = 45,
         .expYield = 179,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 25,
         .friendship = STANDARD_FRIENDSHIP,
@@ -11112,7 +11112,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DRAGON),
         .catchRate = 45,
         .expYield = 170,
-        .evYield_Attack = 2,
+        
         .itemRare = ITEM_DRAGON_FANG,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 30,
@@ -11187,7 +11187,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_GHOST),
         .catchRate = 190,
         .expYield = 61,
-        .evYield_Attack = 1,
+        
         .itemRare = ITEM_LIGHT_CLAY,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 25,
@@ -11257,7 +11257,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_GHOST),
         .catchRate = 90,
         .expYield = 169,
-        .evYield_Attack = 2,
+        
         .itemRare = ITEM_LIGHT_CLAY,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 25,
@@ -11327,7 +11327,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_STEEL),
         .catchRate = 120,
         .expYield = 68,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = 35,
@@ -11401,7 +11401,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_STEEL),
         .catchRate = 45,
         .expYield = 172,
-        .evYield_Attack = 2,
+        
         .itemRare = ITEM_LEADERS_CREST,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
@@ -11472,7 +11472,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_STEEL),
         .catchRate = 25,
         .expYield = 275,
-        .evYield_Attack = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -11538,7 +11538,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 45,
         .expYield = 172,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -11608,7 +11608,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_FLYING),
         .catchRate = 190,
         .expYield = 70,
-        .evYield_Attack = 1,
+        
         .genderRatio = MON_MALE,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -11679,7 +11679,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_FLYING),
         .catchRate = 60,
         .expYield = 179,
-        .evYield_Attack = 2,
+        
         .genderRatio = MON_MALE,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -11749,7 +11749,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FLYING),
         .catchRate = 60,
         .expYield = 179,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = MON_MALE,
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -11817,7 +11817,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_FLYING),
         .catchRate = 190,
         .expYield = 74,
-        .evYield_Defense = 1,
+        
         .genderRatio = MON_FEMALE,
         .eggCycles = 20,
         .friendship = 35,
@@ -11886,7 +11886,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_FLYING),
         .catchRate = 60,
         .expYield = 179,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = MON_FEMALE,
         .eggCycles = 20,
         .friendship = 35,
@@ -11955,7 +11955,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FIRE),
         .catchRate = 90,
         .expYield = 169,
-        .evYield_SpAttack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -12024,7 +12024,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_STEEL),
         .catchRate = 90,
         .expYield = 169,
-        .evYield_Defense = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -12108,7 +12108,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_DRAGON),
         .catchRate = 45,
         .expYield = 60,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
         .friendship = 35,
@@ -12177,7 +12177,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_DRAGON),
         .catchRate = 45,
         .expYield = 147,
-        .evYield_Attack = 2,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
         .friendship = 35,
@@ -12244,7 +12244,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DARK, TYPE_DRAGON),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
         .friendship = 35,
@@ -12319,7 +12319,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_FIRE),
         .catchRate = 45,
         .expYield = 72,
-        .evYield_Attack = 1,
+        
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 40,
         .friendship = STANDARD_FRIENDSHIP,
@@ -12396,7 +12396,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_FIRE),
         .catchRate = 15,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 275 : 248,
-        .evYield_SpAttack = 3,
+        
         .itemCommon = ITEM_SILVER_POWDER,
         .itemRare = ITEM_SILVER_POWDER,
         .genderRatio = PERCENT_FEMALE(50),
@@ -12469,7 +12469,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_STEEL, TYPE_FIGHTING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
-        .evYield_Defense = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 80,
         .friendship = 35,
@@ -12540,7 +12540,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ROCK, TYPE_FIGHTING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
-        .evYield_Attack = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 80,
         .friendship = 35,
@@ -12615,7 +12615,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GRASS, TYPE_FIGHTING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
-        .evYield_SpDefense = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 80,
         .friendship = 35,
@@ -12685,7 +12685,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FLYING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
-        .evYield_Attack = 3,
+        
         .genderRatio = MON_MALE,
         .eggCycles = 120,
         .friendship = 90,
@@ -12776,7 +12776,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_FLYING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
-        .evYield_Attack = 3,
+        
         .genderRatio = MON_MALE,
         .eggCycles = 120,
         .friendship = 90,
@@ -12851,7 +12851,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FLYING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
-        .evYield_Attack = 3,
+        
         .genderRatio = MON_MALE,
         .eggCycles = 120,
         .friendship = 90,
@@ -12942,7 +12942,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FLYING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = MON_MALE,
         .eggCycles = 120,
         .friendship = 90,
@@ -13029,7 +13029,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DRAGON, TYPE_FIRE),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
         .friendship = 0,
@@ -13100,7 +13100,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DRAGON, TYPE_ELECTRIC),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
-        .evYield_Attack = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
         .friendship = 0,
@@ -13171,7 +13171,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_FLYING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = MON_MALE,
         .eggCycles = 120,
         .friendship = 90,
@@ -13262,7 +13262,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_GROUND, TYPE_FLYING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
-        .evYield_Attack = 3,
+        
         .genderRatio = MON_MALE,
         .eggCycles = 120,
         .friendship = 90,
@@ -13337,9 +13337,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DRAGON, TYPE_ICE),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 330 : 297,
-        .evYield_HP = 1,
-        .evYield_Attack = 1,
-        .evYield_SpAttack = 1,
+        
+        
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
         .friendship = 0,
@@ -13413,7 +13413,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DRAGON, TYPE_ICE),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 350 : 315,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
         .friendship = 0,
@@ -13485,7 +13485,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_DRAGON, TYPE_ICE),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 350 : 315,
-        .evYield_Attack = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
         .friendship = 0,
@@ -13560,7 +13560,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_FIGHTING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 80,
         .friendship = 35,
@@ -13631,7 +13631,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_WATER, TYPE_FIGHTING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
-        .evYield_SpAttack = 3,
+        
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 80,
         .friendship = 35,
@@ -13697,9 +13697,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_PSYCHIC),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
-        .evYield_Speed = 1,
-        .evYield_SpAttack = 1,
-        .evYield_SpDefense = 1,
+        
+        
+        
         .itemCommon = ITEM_STAR_PIECE,
         .itemRare = ITEM_STAR_PIECE,
         .genderRatio = MON_GENDERLESS,
@@ -13779,9 +13779,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_NORMAL, TYPE_FIGHTING),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
-        .evYield_Attack = 1,
-        .evYield_Defense = 1,
-        .evYield_Speed = 1,
+        
+        
+        
         .itemCommon = ITEM_STAR_PIECE,
         .itemRare = ITEM_STAR_PIECE,
         .genderRatio = MON_GENDERLESS,
@@ -13861,9 +13861,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .types = MON_TYPES(TYPE_BUG, TYPE_STEEL),                                   \
         .catchRate = 3,                                                             \
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,                    \
-        .evYield_Attack = 1,                                                        \
-        .evYield_Speed = 1,                                                         \
-        .evYield_SpAttack = 1,                                                      \
+                                                                \
+                                                                 \
+                                                              \
         .genderRatio = MON_GENDERLESS,                                              \
         .eggCycles = 120,                                                           \
         .friendship = 0,                                                            \

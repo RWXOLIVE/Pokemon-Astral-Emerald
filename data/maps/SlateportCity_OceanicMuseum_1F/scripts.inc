@@ -149,9 +149,9 @@ SlateportCity_OceanicMuseum_1F_EventScript_FamiliarGrunt::
 	applymovement LOCALID_OCEANIC_MUSEUM_FAMILIAR_GRUNT, Common_Movement_Delay48
 	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_1F_Text_RememberMeTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM_THIEF
+	giveitem ITEM_TM_TORMENT
 	goto_if_eq VAR_RESULT, 0, SlateportCity_OceanicMuseum_1F_EventScript_NoRoomForThief
-	setflag FLAG_RECEIVED_TM_THIEF
+	setflag FLAG_RECEIVED_TM_TORMENT
 	msgbox SlateportCity_OceanicMuseum_1F_Text_HopeINeverSeeYouAgain, MSGBOX_DEFAULT
 	closemessage
 	goto_if_eq VAR_FACING, DIR_NORTH, SlateportCity_OceanicMuseum_1F_EventScript_FamiliarGruntExitNorth
@@ -288,12 +288,12 @@ SlateportCity_OceanicMuseum_1F_Text_WantSeaPokemon:
 
 SlateportCity_OceanicMuseum_1F_Text_RememberMeTakeThis:
 	.string "Aiyeeeh!\n"
-	.string "What are you doing here?\p"
+	.string "What are you doing here twerp?\p"
 	.string "Me? I'm the TEAM AQUA member\n"
 	.string "you thumped before, remember?\l"
-	.string "Back in RUSTURF TUNNEL?\p"
+	.string "Back in PETALBURG WOODS?\p"
 	.string "Here, take this!\n"
-	.string "You have to forgive me!$"
+	.string "I'll be right back!$"
 
 SlateportCity_OceanicMuseum_1F_Text_HopeINeverSeeYouAgain:
 	.string "That TM, it suits you more than it\n"
@@ -375,4 +375,3 @@ SlateportCity_OceanicMuseum_1F_Text_DepthMeasuringMachine:
 	.string "a glass dome.\p"
 	.string "Maybe it's for measuring the depth\n"
 	.string "of something…$"
-

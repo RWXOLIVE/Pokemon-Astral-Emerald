@@ -324,6 +324,9 @@ static void DebugAction_Sound_SE_SelectId(u8 taskId);
 static void DebugAction_Sound_MUS(u8 taskId);
 static void DebugAction_Sound_MUS_SelectId(u8 taskId);
 
+void PreDamage(void);
+static void PreDam_SelectHP(u8 taskId);
+
 static void DebugAction_BerryFunctions_ClearAll(u8 taskId);
 static void DebugAction_BerryFunctions_Ready(u8 taskId);
 static void DebugAction_BerryFunctions_NextStage(u8 taskId);
@@ -2956,6 +2959,106 @@ static void DebugAction_Give_Pokemon_ComplexCreateMon(u8 taskId) //https://githu
 
     Free(sDebugMonData);
     DebugAction_DestroyExtraWindow(taskId); //return sentToPc;
+}
+
+static const u8 sPreDamText[] =                _("Set HP: {STR_VAR_3}\n{STR_VAR_1}{CLEAR_TO 90}\n\n{STR_VAR_2}{CLEAR_TO 90}");
+void PreDamage(void)
+{
+    u8 windowId;
+    u8 taskId;
+    u16 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES);
+    u32 HP = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP);
+    u32 MaxHP = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_MAX_HP);
+
+    GetMonNickname(&gPlayerParty[gSpecialVar_0x8004], gStringVar1);
+
+    taskId = 2;
+    
+
+    HideMapNamePopUpWindow();
+    LoadMessageBoxAndBorderGfx();
+    windowId = AddWindow(&sDebugMenuWindowTemplateExtra);
+    DrawStdWindowFrame(windowId, FALSE);
+
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+    gTasks[taskId].tInput = HP;
+
+    // Display initial Pokémon
+    StringCopy(gStringVar2, gText_DigitIndicator[0]);
+    ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, 3);
+    StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
+    StringExpandPlaceholders(gStringVar4, sPreDamText);
+    AddTextPrinterParameterized(windowId, DEBUG_MENU_FONT, gStringVar4, 1, 1, 0, NULL);
+
+    //Set task data
+    gTasks[taskId].func = PreDam_SelectHP;
+    gTasks[taskId].tSubWindowId = windowId;
+
+    gTasks[taskId].tDigit = 0;
+    gTasks[taskId].tIsComplex = FALSE;
+
+    FreeMonIconPalettes();
+    LoadMonIconPalette(species);
+    gTasks[taskId].tSpriteId = CreateMonIcon(species, SpriteCB_MonIcon, DEBUG_NUMBER_ICON_X, DEBUG_NUMBER_ICON_Y, 4, 0);
+    gSprites[gTasks[taskId].tSpriteId].oam.priority = 0;
+}
+
+static void PreDam_SelectHP(u8 taskId)
+{
+    u32 HP = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP);
+    u32 MaxHP = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_MAX_HP);
+
+    if (JOY_NEW(DPAD_ANY))
+    {
+        PlaySE(SE_SELECT);
+
+        if (JOY_NEW(DPAD_UP))
+        {
+            gTasks[taskId].tInput += sPowersOfTen[gTasks[taskId].tDigit];
+            if (gTasks[taskId].tInput >= MaxHP)
+                gTasks[taskId].tInput = MaxHP;
+        }
+        if (JOY_NEW(DPAD_DOWN))
+        {
+            gTasks[taskId].tInput -= sPowersOfTen[gTasks[taskId].tDigit];
+            if (gTasks[taskId].tInput < 1)
+                gTasks[taskId].tInput = 1;
+        }
+        if (JOY_NEW(DPAD_LEFT))
+        {
+            if (gTasks[taskId].tDigit > 0)
+                gTasks[taskId].tDigit -= 1;
+        }
+        if (JOY_NEW(DPAD_RIGHT))
+        {
+            if (gTasks[taskId].tDigit < 2)
+                gTasks[taskId].tDigit += 1;
+        }
+
+        StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].tDigit]);
+        ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, 3);
+        StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
+        StringExpandPlaceholders(gStringVar4, sPreDamText);
+        AddTextPrinterParameterized(gTasks[taskId].tSubWindowId, DEBUG_MENU_FONT, gStringVar4, 1, 1, 0, NULL);
+    }
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP, &gTasks[taskId].tInput);
+        PlaySE(SE_SELECT);
+        FreeMonIconPalettes();
+        FreeAndDestroyMonIconSprite(&gSprites[gTasks[taskId].tSpriteId]);
+        DebugAction_Cancel(taskId);
+
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        FreeMonIconPalettes();
+        FreeAndDestroyMonIconSprite(&gSprites[gTasks[taskId].tSpriteId]);
+        DebugAction_Cancel(taskId);
+
+    }
 }
 
 #undef tIsComplex

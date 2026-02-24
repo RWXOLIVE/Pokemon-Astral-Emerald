@@ -151,6 +151,8 @@ static void BufferFanClubTrainerName_(struct LinkBattleRecords *, u8, u8);
 static void BufferFanClubTrainerName_(u8 whichLinkTrainer, u8 whichNPCTrainer);
 #endif //FREE_LINK_BATTLE_RECORDS
 
+//extern void PreDamage(void);
+
 static const u8 sText_BigGuy[] = _("Big guy");
 static const u8 sText_BigGirl[] = _("Big girl");
 static const u8 sText_Son[] = _("son");
@@ -4380,4 +4382,138 @@ void SetAbility(void)
 {
     u32 ability = gSpecialVar_Result;
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM, &ability);
+}
+
+void SetMonStatus(void)
+{
+    u16 status = VarGet(VAR_TEMP_1);
+    u32 curStatus = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_STATUS);
+    u32 species = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES);
+    u32 type1 = gSpeciesInfo[species].types[0];
+    u32 type2 = gSpeciesInfo[species].types[1];
+    if (status == STATUS1_POISON)
+	{
+	    if (type1 != TYPE_POISON && type1 != TYPE_STEEL && type2 != TYPE_POISON && type2 != TYPE_STEEL)
+		    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_STATUS, &status);
+	    else
+		    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_STATUS, &curStatus);
+	}
+
+    if (status == STATUS1_BURN)
+	{
+	    if (type1 != TYPE_FIRE && type2 != TYPE_FIRE)
+		    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_STATUS, &status);
+	    else
+		    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_STATUS, &curStatus);
+	}
+
+    else if (status == STATUS1_FREEZE || STATUS1_PARALYSIS || STATUS1_SLEEP)
+	{
+	    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_STATUS, &status);
+	}
+
+}
+
+void SetMonNature(void)
+{
+    u16 nature = VarGet(VAR_TEMP_1);
+
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HIDDEN_NATURE, &nature);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
+//void Pre_Damage(void)
+//{
+    //PreDamage();
+//}
+
+
+// Maximizes the HP IV of the Pokémon in gSpecialVar_0x8004 
+void MaxHpIV(void)
+{
+    u8 HpIv = 31;
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP_IV, &HpIv);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
+// Maximizes the Atk IV of the Pokémon in gSpecialVar_0x8004
+void MaxAtkIV(void)
+{
+    u8 AtkIv = 31;
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ATK_IV, &AtkIv);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
+// Maximizes the Def IV of the Pokémon in gSpecialVar_0x8004
+void MaxDefIV(void)
+{
+    u8 DefIv = 31;
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_DEF_IV, &DefIv);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
+// Maximizes the Spd IV of the Pokémon in gSpecialVar_0x8004
+void MaxSpdIV(void)
+{
+    u8 SpdIv = 31;
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPEED_IV, &SpdIv);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
+// Maximizes the SpAtk IV of the Pokémon in gSpecialVar_0x8004
+void MaxSpAtkIV(void)
+{
+    u8 SpAtkIv = 31;
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPATK_IV, &SpAtkIv);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
+// Maximizes the SpDef IV of the Pokémon in gSpecialVar_0x8004
+void MaxSpDefIV(void)
+{
+    u8 SpDefIv = 31;
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPDEF_IV, &SpDefIv);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
+u16 ScriptGetPartyMonHP(void)
+{
+    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP_IV);
+}
+
+u16 ScriptGetPartyMonAtk(void)
+{
+    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ATK_IV);
+}
+
+u16 ScriptGetPartyMonDef(void)
+{
+    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_DEF_IV);
+}
+
+u16 ScriptGetPartyMonSpd(void)
+{
+    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPEED_IV);
+}
+
+u16 ScriptGetPartyMonSpAtk(void)
+{
+    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPATK_IV);
+}
+
+u16 ScriptGetPartyMonSpDef(void)
+{
+    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPDEF_IV);
+}
+
+u16 ScriptCheckPartyMonNature(void)
+{
+
+    u16 tOldNature = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HIDDEN_NATURE);
+    u16 tNewNature = VarGet(VAR_TEMP_1);
+
+    if (tOldNature == tNewNature)
+        return FALSE;
+    else
+        return TRUE;
 }

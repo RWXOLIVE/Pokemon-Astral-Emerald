@@ -4,6 +4,7 @@ InsideOfTruck_MapScripts::
 	.byte 0
 
 InsideOfTruck_OnLoad:
+	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setmetatile 4, 1, METATILE_InsideOfTruck_ExitLight_Top, FALSE
 	setmetatile 4, 2, METATILE_InsideOfTruck_ExitLight_Mid, FALSE
 	setmetatile 4, 3, METATILE_InsideOfTruck_ExitLight_Bottom, FALSE

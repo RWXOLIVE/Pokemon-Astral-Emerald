@@ -5008,6 +5008,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
                         ADJUST_SCORE(DECENT_EFFECT); // Slow 'em down
                     break;
                 case ABILITY_CHLOROPHYLL:
+                case ABILITY_HEATED_RUSH:
                 case ABILITY_FLOWER_GIFT:
                     if (AI_GetWeather() & B_WEATHER_SUN)
                         ADJUST_SCORE(DECENT_EFFECT); // Slow 'em down

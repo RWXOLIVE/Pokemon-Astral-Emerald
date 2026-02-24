@@ -21,6 +21,7 @@
 #include "constants/items.h"
 #include "constants/script_menu.h"
 #include "constants/songs.h"
+#include "list_menu.h"
 
 #include "data/script_menu.h"
 
@@ -1145,4 +1146,156 @@ int ScriptMenu_AdjustLeftCoordFromWidth(int left, int width)
     }
 
     return adjustedLeft;
+}
+
+// Text displayed as options.
+static const u8 sText_Hardy[] = _("Hardy (Neutral)");
+static const u8 sText_Lonely[] = _("Lonely (+Atk, -Def)");
+static const u8 sText_Brave[] = _("Brave (+Atk, -Spe)");
+static const u8 sText_Adamant[] = _("Adamant (+Atk, -SpA)");
+static const u8 sText_Naughty[] = _("Naughty (+Atk, -SpD)");
+static const u8 sText_Bold[] = _("Bold (+Def, -Atk)");
+static const u8 sText_Docile[] = _("Docile (Neutral)");
+static const u8 sText_Relaxed[] = _("Relaxed (+Def, -Spe)");
+static const u8 sText_Impish[] = _("Impish (+Def, -SpA)");
+static const u8 sText_Lax[] = _("Lax (+Def, -SpD)");
+static const u8 sText_Timid[] = _("Timid (+Spe, -Atk)");
+static const u8 sText_Hasty[] = _("Hasty (+Spe, -Def)");
+static const u8 sText_Serious[] = _("Serious (Neutral)");
+static const u8 sText_Jolly[] = _("Jolly (+Spe, -SpA)");
+static const u8 sText_Naive[] = _("Naive (+Spe, -SpD)");
+static const u8 sText_Modest[] = _("Modest (+SpA, -Atk)");
+static const u8 sText_Mild[] = _("Mild (+SpA, -Def)");
+static const u8 sText_Quiet[] = _("Quiet (+SpA, -Spe)");
+static const u8 sText_Bashful[] = _("Bashful (Neutral)");
+static const u8 sText_Rash[] = _("Rash (+SpA, -SpD)");
+static const u8 sText_Calm[] = _("Calm (+SpD, -Atk)");
+static const u8 sText_Gentle[] = _("Gentle (+SpD, -Def)");
+static const u8 sText_Sassy[] = _("Sassy (+SpD, -Spe)");
+static const u8 sText_Careful[] = _("Careful (+SpD, -SpA)");
+static const u8 sText_Quirky[] = _("Quirky (Neutral)");
+
+// Sets of multichoices.
+static const struct ListMenuItem sNatures[] =
+{
+    {sText_Hardy, 0},
+    {sText_Lonely, 1},
+    {sText_Brave, 2},
+    {sText_Adamant, 3},
+    {sText_Naughty, 4},
+    {sText_Bold, 5},
+    {sText_Docile, 6},
+    {sText_Relaxed, 7},
+    {sText_Impish, 8},
+    {sText_Lax, 9},
+    {sText_Timid, 10},
+    {sText_Hasty, 11},
+    {sText_Serious, 12},
+    {sText_Jolly, 13},
+    {sText_Naive, 14},
+    {sText_Modest, 15},
+    {sText_Mild, 16},
+    {sText_Quiet, 17},
+    {sText_Bashful, 18},
+    {sText_Rash, 19},
+    {sText_Calm, 20},
+    {sText_Gentle, 21},
+    {sText_Sassy, 22},
+    {sText_Careful, 23},
+    {sText_Quirky, 24},
+};
+
+// Table of your multichoice sets.
+struct
+{
+    const struct ListMenuItem *set;
+    int count;
+} static const sScrollingSets[] =
+{
+    {sNatures, ARRAY_COUNT(sNatures)},
+};
+
+static void Task_ScrollingMultichoiceInput(u8 taskId);
+
+static const struct ListMenuTemplate sMultichoiceListTemplate =
+{
+    .header_X = 0,
+    .item_X = 8,
+    .cursor_X = 0,
+    .upText_Y = 1,
+    .cursorPal = 2,
+    .fillValue = 1,
+    .cursorShadowPal = 3,
+    .lettersSpacing = 1,
+    .itemVerticalPadding = 0,
+    .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
+    .fontId = 1,
+    .cursorKind = 0
+};
+
+// 0x8004 = set id
+// 0x8005 = window X
+// 0x8006 = window y
+// 0x8007 = showed at once
+// 0x8008 = Allow B press
+void ScriptMenu_ScrollingMultichoice(void)
+{
+    int i, windowId, taskId, width = 0;
+    int setId = gSpecialVar_0x800B;
+    int left = gSpecialVar_0x8005;
+    int top = gSpecialVar_0x8006;
+    int maxShowed = gSpecialVar_0x8007;
+
+    for (i = 0; i < sScrollingSets[setId].count; i++)
+        width = DisplayTextAndGetWidth(sScrollingSets[setId].set[i].name, width);
+
+    width = ConvertPixelWidthToTileWidth(width);
+    left = ScriptMenu_AdjustLeftCoordFromWidth(left, width);
+    windowId = CreateWindowFromRect(left, top, width, maxShowed * 2);
+    SetStandardWindowBorderStyle(windowId, 0);
+    CopyWindowToVram(windowId, 3);
+
+    gMultiuseListMenuTemplate = sMultichoiceListTemplate;
+    gMultiuseListMenuTemplate.windowId = windowId;
+    gMultiuseListMenuTemplate.items = sScrollingSets[setId].set;
+    gMultiuseListMenuTemplate.totalItems = sScrollingSets[setId].count;
+    gMultiuseListMenuTemplate.maxShowed = maxShowed;
+
+    taskId = CreateTask(Task_ScrollingMultichoiceInput, 0);
+    gTasks[taskId].data[0] = ListMenuInit(&gMultiuseListMenuTemplate, 0, 0);
+    gTasks[taskId].data[1] = gSpecialVar_0x8008;
+    gTasks[taskId].data[2] = windowId;
+}
+
+static void Task_ScrollingMultichoiceInput(u8 taskId)
+{
+    bool32 done = FALSE;
+    s32 input = ListMenu_ProcessInput(gTasks[taskId].data[0]);
+
+    switch (input)
+    {
+    case LIST_HEADER:
+    case LIST_NOTHING_CHOSEN:
+        break;
+    case LIST_CANCEL:
+        if (gTasks[taskId].data[1])
+        {
+            gSpecialVar_Result = 0x7F;
+            done = TRUE;
+        }
+        break;
+    default:
+        gSpecialVar_Result = input;
+        done = TRUE;
+        break;
+    }
+
+    if (done)
+    {
+        DestroyListMenuTask(gTasks[taskId].data[0], NULL, NULL);
+        ClearStdWindowAndFrame(gTasks[taskId].data[2], TRUE);
+        RemoveWindow(gTasks[taskId].data[2]);
+        ScriptContext_Enable();
+        DestroyTask(taskId);
+    }
 }
