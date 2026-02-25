@@ -868,7 +868,6 @@ LittlerootTown_Movement_MomExitThroughDoor:
 	step_end
 
 LittlerootTown_EventScript_Mom::
-	setspeaker Text_Mom
 	lock
 	faceplayer
 	checkplayergender
@@ -955,7 +954,7 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "Go on, go get them, honey!$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
-	.string "I'm fromt he UNOVA region, I was a\n"
+	.string "I'm from the UNOVA region, I was a\n"
 	.string "trainer like yourself.\p"
 	.string "I'm here trying to track TEAM PLASMA!$"
 
@@ -1020,4 +1019,7 @@ Text_Mom:
 	.string "MOM$"
 
 Text_KnowledgeAble_Man:
-	.string "KNOWLEDGEABLE MAN$"
+	.string "MYSTERY MAN$"
+
+Text_Girl:
+	.string "GIRL$"
