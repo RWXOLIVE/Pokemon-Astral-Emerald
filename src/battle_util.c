@@ -1864,6 +1864,22 @@ s32 GetDrainedBigRootHp(u32 battler, s32 hp)
     return hp;
 }
 
+/* For moves/effects that drain HP (Ingrain, Leech Seed, Strength Sap, Aqua Ring)
+s32 GetDrainedBigRootHp(u32 battler, s32 hp, u8 effect)
+{
+    // If Big Root is held and the effect is an absorb-type
+    if (GetBattlerHoldEffect(battler) == HOLD_EFFECT_BIG_ROOT
+        && effect == EFFECT_ABSORB)
+    {
+        hp = (hp * 1300) / 1000; // 1.3x boost
+    }
+
+    if (hp == 0)
+        hp = 1;
+
+    return hp;
+}*/
+
 // Should always be the last check. Otherwise the ability might be wrongly recorded.
 bool32 IsAbilityAndRecord(u32 battler, enum Ability battlerAbility, enum Ability abilityToCheck)
 {
@@ -8810,8 +8826,18 @@ static inline void MulByTypeEffectiveness(struct DamageContext *ctx, uq4_12_t *m
         mod = UQ_4_12(1.0);
     }
     else if ((ctx->moveType == TYPE_FIGHTING || ctx->moveType == TYPE_NORMAL) && defType == TYPE_GHOST
-        && (ctx->abilityAtk == ABILITY_SCRAPPY || ctx->abilityAtk == ABILITY_MINDS_EYE)
+        && (ctx->abilityAtk == ABILITY_SCRAPPY || ctx->abilityAtk == ABILITY_MINDS_EYE || ctx->abilityAtk == ABILITY_RECKLESS)
         && mod == UQ_4_12(0.0))
+    {
+        mod = UQ_4_12(1.0);
+        if (ctx->updateFlags)
+            RecordAbilityBattle(ctx->battlerAtk, ctx->abilityAtk);
+    }
+    // Corrosion hitting Steel-types
+    else if (ctx->abilityAtk == ABILITY_CORROSION
+            && ctx->moveType == TYPE_POISON 
+            && defType == TYPE_STEEL
+            && mod == UQ_4_12(0.0))
     {
         mod = UQ_4_12(1.0);
         if (ctx->updateFlags)
