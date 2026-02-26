@@ -2563,7 +2563,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .levelUpLearnset = sBuizelLevelUpLearnset,
         .teachableLearnset = sBuizelTeachableLearnset,
         .eggMoveLearnset = sBuizelEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_FLOATZEL}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 21, SPECIES_FLOATZEL}),
     },
 
     [SPECIES_FLOATZEL] =

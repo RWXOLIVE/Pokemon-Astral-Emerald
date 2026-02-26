@@ -231,8 +231,8 @@
     },
     {
       "type": "trigger",
-      "x": 4,
-      "y": 10,
+      "x": 2,
+      "y": 4,
       "elevation": 3,
       "var": "VAR_SCOTT_PETALBURG_ENCOUNTER",
       "var_value": "0",
@@ -240,8 +240,8 @@
     },
     {
       "type": "trigger",
-      "x": 4,
-      "y": 11,
+      "x": 2,
+      "y": 5,
       "elevation": 3,
       "var": "VAR_SCOTT_PETALBURG_ENCOUNTER",
       "var_value": "0",
@@ -249,8 +249,8 @@
     },
     {
       "type": "trigger",
-      "x": 4,
-      "y": 12,
+      "x": 2,
+      "y": 6,
       "elevation": 3,
       "var": "VAR_SCOTT_PETALBURG_ENCOUNTER",
       "var_value": "0",
@@ -258,8 +258,8 @@
     },
     {
       "type": "trigger",
-      "x": 4,
-      "y": 13,
+      "x": 2,
+      "y": 7,
       "elevation": 3,
       "var": "VAR_SCOTT_PETALBURG_ENCOUNTER",
       "var_value": "0",

@@ -229,11 +229,55 @@ Pic: Aqua Grunt M
 Gender: Male
 Music: Aqua
 Double Battle: No
-AI: Check Bad Move
+Mugshot: Blue
+AI: Check Bad Move / Try To Faint / Check Viability / Omniscient / Smart Mon Choices
 
-Poochyena
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Remoraid @ King's Rock  
+Ability: Sniper  
+Level: 14
+Mild Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe 
+- Aurora Beam  
+- Water Pulse  
+- Psybeam  
+- Focus Energy  
+
+Gastly @ Eviolite  
+Ability: Levitate  
+Level: 13  
+Bold Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe  
+- Will-O-Wisp  
+- Hex  
+- HP Fighting 
+- Sludge  
+
+Deino @ Zoom Lens  
+Ability: Hustle  
+Level: 14  
+Jolly Nature  
+- Ice Fang  
+- Thunder Fang  
+- Fire Fang  
+- Zen Headbutt  
+
+Pawniard @ Chople Berry  
+Ability: Inner Focus  
+Level: 15  
+Jolly Nature  
+- Swords Dance  
+- Metal Claw  
+- Pursuit  
+- Rock Tomb  
+
+Binacle @ Lum Berry  
+Ability: Tough Claws  
+Level: 15  
+Jolly Nature  
+- Rock Polish  
+- Aerial Ace  
+- Rock Tomb  
+- Razor Shell  
 
 === TRAINER_MARCEL ===
 Name: MARCEL
@@ -2119,13 +2163,38 @@ Class: Lady
 Pic: Lady
 Gender: Female
 Music: Female
-Items: Full Restore
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability / Omniscient / Smart Mon Choices
 
-Zigzagoon @ Nugget
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Jigglypuff @ Sitrus Berry  
+Ability: Competitive  
+Level: 13
+Impish Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe 
+- Thunder Wave  
+- Play Rough  
+- Draining Kiss  
+- Headbutt  
+
+Vulpix @ Salac Berry  
+Ability: Pixilate  
+Level: 14
+Hasty Nature
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe 
+- Confuse Ray  
+- Swift  
+- Incinerate  
+- Flail  
+
+Kirlia @ Big Root  
+Ability: Trace  
+Level: 13
+Jolly Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe 
+- Hypnosis  
+- Dream Eater  
+- Draining Kiss  
+- Hex  
 
 === TRAINER_DAPHNE ===
 Name: DAPHNE
@@ -5975,15 +6044,22 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability / Omniscient / Smart Mon Choices
 
-Zigzagoon
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Stunky @ Choice Scarf  
+Ability: Aftermath  
+Level: 13  
+Lax Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe 
+- Memento  
 
-Seedot
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Yungoos  
+Ability: Adaptability  
+Level: 14  
+Bold Nature  
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Retaliate
+- Quick Attack
 
 === TRAINER_JOSH ===
 Name: JOSH
@@ -13001,17 +13077,40 @@ Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DARIAN ===
-Name: DARIAN
+Name: PATRICK
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability / Omniscient / Smart Mon Choices
 
-Magikarp
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lombre @ Lum Berry  
+Ability: Own Tempo  
+Level: 13  
+Timid Nature  
+IVs: 0 Atk  
+- Giga Drain  
+- Water Pulse  
+- Seismic Toss  
+- Teeter Dance  
+
+Kabuto @ Oran Berry  
+Ability: Weak Armor  
+Level: 13  
+Naive Nature  
+- Rock Tomb  
+- Ancient Power  
+- Aqua Jet  
+- Rock Smash  
+
+Arrokuda @ Scope Lens  
+Ability: Strong Jaw  
+Level: 14  
+Adamant Nature  
+- Bite  
+- Dive  
+- Ice Fang  
 
 === TRAINER_HAILEY ===
 Name: HAILEY

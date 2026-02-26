@@ -4614,7 +4614,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
     [SPECIES_TOGEDEMARU] =
     {
         .baseHP        = 65,
-        .baseAttack    = 100,
+        .baseAttack    = 98,
         .baseDefense   = 81,
         .baseSpeed     = 96,
         .baseSpAttack  = 25,
