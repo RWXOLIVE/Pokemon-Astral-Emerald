@@ -137,7 +137,7 @@ static u16 CreatePicSprite(u16 species, bool8 isShiny, u32 personality, bool8 is
     if (i == PICS_COUNT)
         return 0xFFFF;
 
-    framePics = Alloc(PIC_SPRITE_SIZE * MAX_PIC_FRAMES);
+    framePics = AllocZeroed(PIC_SPRITE_SIZE * MAX_PIC_FRAMES);
     if (!framePics)
         return 0xFFFF;
 
@@ -193,7 +193,7 @@ u16 CreateMonPicSprite_Affine(u16 species, bool8 isShiny, u32 personality, u8 fl
     if (i == PICS_COUNT)
         return 0xFFFF;
 
-    framePics = Alloc(MON_PIC_SIZE * MAX_MON_PIC_FRAMES);
+    framePics = AllocZeroed(MON_PIC_SIZE * MAX_MON_PIC_FRAMES);
     if (!framePics)
         return 0xFFFF;
 

@@ -14,6 +14,17 @@ const struct Tileset gTileset_General =
     .callback = InitTilesetAnim_General,
 };
 
+const struct Tileset gTileset_Snowy =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_Snowy,
+    .palettes = gTilesetPalettes_Snowy,
+    .metatiles = gMetatiles_Snowy,
+    .metatileAttributes = gMetatileAttributes_Snowy,
+    .callback = InitTilesetAnim_Snowy,
+};
+
 const struct Tileset gTileset_Petalburg =
 {
     .isCompressed = TRUE,

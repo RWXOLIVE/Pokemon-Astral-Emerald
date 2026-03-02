@@ -813,6 +813,31 @@ static const struct MenuAction MultichoiceList_ResourceNPC_IVS[] =
     {gText_NPCSpd},
 };
 
+static const struct MenuAction MultichoiceList_QuickMenuMain[] =
+{
+    {COMPOUND_STRING("Porta-PC")},
+    {COMPOUND_STRING("Poke Vial")},
+    {COMPOUND_STRING("Teach Move")},
+    {COMPOUND_STRING("Utility")},
+    {COMPOUND_STRING("Enc. Table")},
+    {COMPOUND_STRING("Repel")},
+    {COMPOUND_STRING("Poke Rider")},
+};
+
+static const struct MenuAction MultichoiceList_QuickMenuUtility[] =
+{
+    {COMPOUND_STRING("Time of Day")},
+    {COMPOUND_STRING("Hatch Egg")},
+    {COMPOUND_STRING("Back")},
+};
+
+static const struct MenuAction MultichoiceList_QuickMenuTime[] =
+{
+    {COMPOUND_STRING("Day")},
+    {COMPOUND_STRING("Night")},
+    {COMPOUND_STRING("Back")},
+};
+
 struct MultichoiceListStruct
 {
     const struct MenuAction *list;
@@ -939,6 +964,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_RESOURCE_NPC]               = MULTICHOICE(MultichoiceList_ResourceNPC),
     [MULTI_PRESTATUS]                  = MULTICHOICE(MultichoiceList_ResourceNPC_Status),
     [MULTI_IVS]                        = MULTICHOICE(MultichoiceList_ResourceNPC_IVS),
+    [MULTI_QUICK_MENU_MAIN]            = MULTICHOICE(MultichoiceList_QuickMenuMain),
+    [MULTI_QUICK_MENU_UTILITY]         = MULTICHOICE(MultichoiceList_QuickMenuUtility),
+    [MULTI_QUICK_MENU_TIME]            = MULTICHOICE(MultichoiceList_QuickMenuTime),
 };
 
 const u8 *const gStdStrings[] =

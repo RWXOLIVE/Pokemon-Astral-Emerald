@@ -126,6 +126,9 @@
 #define MULTI_RESOURCE_NPC                 115
 #define MULTI_PRESTATUS                    116
 #define MULTI_IVS                          117
+#define MULTI_QUICK_MENU_MAIN              118
+#define MULTI_QUICK_MENU_UTILITY           119
+#define MULTI_QUICK_MENU_TIME              120
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

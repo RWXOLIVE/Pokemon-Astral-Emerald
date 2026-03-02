@@ -115,6 +115,14 @@ enum {
     MENU_CATALOG_MOWER,
     MENU_CHANGE_FORM,
     MENU_CHANGE_ABILITY,
+    MENU_MODE,
+    MENU_MODE_SET_HP,
+    MENU_MODE_BRN,
+    MENU_MODE_FRZ,
+    MENU_MODE_PAR,
+    MENU_MODE_PSN,
+    MENU_MODE_FRB,
+    MENU_MODE_BACK,
     MENU_FIELD_MOVES
 };
 
@@ -137,6 +145,7 @@ enum {
     ACTIONS_TAKEITEM_TOSS,
     ACTIONS_ROTOM_CATALOG,
     ACTIONS_ZYGARDE_CUBE,
+    ACTIONS_MODE,
 };
 
 enum {
@@ -500,6 +509,20 @@ static void CursorCb_CatalogFan(u8);
 static void CursorCb_CatalogMower(u8);
 static void CursorCb_ChangeForm(u8);
 static void CursorCb_ChangeAbility(u8);
+static void CursorCb_Mode(u8);
+static void CursorCb_ModeSetHp(u8);
+static void CursorCb_ModeBurn(u8);
+static void CursorCb_ModeFreeze(u8);
+static void CursorCb_ModeParalysis(u8);
+static void CursorCb_ModePoison(u8);
+static void CursorCb_ModeFrostbite(u8);
+static void CursorCb_ModeBack(u8);
+static void OpenPartyMonSelectionSubmenu(u8, u8);
+static void RefreshSelectedPartyMonDisplay(void);
+static void DisplayPartyModeHpPrompt(void);
+static void DrawPartyModeHpWindow(u8);
+static void Task_HandlePartyModeHpInput(u8);
+static void PartyMenuModeSetStatus(u8, u32);
 void TryItemHoldFormChange(struct Pokemon *mon, s8 slotId);
 static void ShowMoveSelectWindow(u8 slot);
 static void Task_HandleWhichMoveInput(u8 taskId);
@@ -2974,6 +2997,7 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
+    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MODE);
 
     if (P_PARTY_MOVE_RELEARNER
      && (GetMonData(&mons[slotId], MON_DATA_SPECIES)
@@ -3167,6 +3191,25 @@ static void Task_HandleSelectionMenuInput(u8 taskId)
             break;
         }
     }
+}
+
+static void OpenPartyMonSelectionSubmenu(u8 taskId, u8 actionType)
+{
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+    SetPartyMonSelectionActions(gPlayerParty, gPartyMenu.slotId, actionType);
+    DisplaySelectionWindow(SELECTWINDOW_ACTIONS);
+    DisplayPartyMenuStdMessage(PARTY_MSG_DO_WHAT_WITH_MON);
+    gTasks[taskId].data[0] = 0xFF;
+    gTasks[taskId].func = Task_HandleSelectionMenuInput;
+}
+
+static void RefreshSelectedPartyMonDisplay(void)
+{
+    DisplayPartyPokemonData(gPartyMenu.slotId);
+    SetPartyMonAilmentGfx(&gPlayerParty[gPartyMenu.slotId], &sPartyMenuBoxes[gPartyMenu.slotId]);
+    PutWindowTilemap(sPartyMenuBoxes[gPartyMenu.slotId].windowId);
+    ScheduleBgCopyTilemapToVram(0);
 }
 
 static void CursorCb_Summary(u8 taskId)
@@ -5576,6 +5619,45 @@ bool8 BoxMonKnowsMove(struct BoxPokemon *boxMon, u16 move)
             return TRUE;
     }
     return FALSE;
+}
+
+bool8 PlayerHasMove(u16 move)
+{
+    u16 item;
+    switch (move)
+    {
+    case MOVE_SECRET_POWER:
+        item = ITEM_TM43;
+        break;
+    case MOVE_CUT:
+        item = ITEM_HM01;
+        break;
+    case MOVE_FLY:
+        item = ITEM_HM02;
+        break;
+    case MOVE_SURF:
+        item = ITEM_HM03;
+        break;
+    case MOVE_STRENGTH:
+        item = ITEM_HM04;
+        break;
+    case MOVE_FLASH:
+        item = ITEM_HM05;
+        break;
+    case MOVE_ROCK_SMASH:
+        item = ITEM_HM06;
+        break;
+    case MOVE_WATERFALL:
+        item = ITEM_HM07;
+        break;
+    case MOVE_DIVE:
+        item = ITEM_HM08;
+        break;
+    default:
+        return FALSE;
+        break;
+    }
+    return CheckBagHasItem(item, 1);
 }
 
 static void DisplayLearnMoveMessage(const u8 *str)
@@ -8294,14 +8376,169 @@ static void CursorCb_ChangeTutorMoves(u8 taskId)
 static void CursorCb_LearnMovesSubMenu(u8 taskId)
 {
     PlaySE(SE_SELECT);
+    OpenPartyMonSelectionSubmenu(taskId, ACTIONS_MOVES_SUB);
+}
+
+#define tPartyModeHpValue     data[0]
+#define tPartyModeHpStepIndex data[1]
+
+static const u8 sText_PartyModeHpControls[] = _("UP/DN HP\nL/R STEP");
+static const u8 sText_PartyModeHpWindow[] = _("{STR_VAR_1} HP");
+static const u16 sPartyModeHpSteps[] = {1, 10, 100, 1000};
+
+static void CursorCb_Mode(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+    OpenPartyMonSelectionSubmenu(taskId, ACTIONS_MODE);
+}
+
+static void CursorCb_ModeSetHp(u8 taskId)
+{
+    struct WindowTemplate window;
+
+    PlaySE(SE_SELECT);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-    SetPartyMonSelectionActions(gPlayerParty, gPartyMenu.slotId, ACTIONS_MOVES_SUB);
-    DisplaySelectionWindow(SELECTWINDOW_ACTIONS);
-    DisplayPartyMenuStdMessage(PARTY_MSG_DO_WHAT_WITH_MON);
-    gTasks[taskId].data[0] = 0xFF;
-    gTasks[taskId].func = Task_HandleSelectionMenuInput;
+
+    DisplayPartyModeHpPrompt();
+
+    SetWindowTemplateFields(&window, 2, 22, 17, 7, 2, 14, 0x2E9);
+    sPartyMenuInternal->windowId[0] = AddWindow(&window);
+    DrawStdFrameWithCustomTileAndPalette(sPartyMenuInternal->windowId[0], FALSE, 0x4F, 13);
+
+    gTasks[taskId].tPartyModeHpValue = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP);
+    gTasks[taskId].tPartyModeHpStepIndex = 0;
+
+    DrawPartyModeHpWindow(taskId);
+    gTasks[taskId].func = Task_HandlePartyModeHpInput;
 }
+
+static void CursorCb_ModeBurn(u8 taskId)
+{
+    PartyMenuModeSetStatus(taskId, STATUS1_BURN);
+}
+
+static void CursorCb_ModeFreeze(u8 taskId)
+{
+    PartyMenuModeSetStatus(taskId, STATUS1_FREEZE);
+}
+
+static void CursorCb_ModeParalysis(u8 taskId)
+{
+    PartyMenuModeSetStatus(taskId, STATUS1_PARALYSIS);
+}
+
+static void CursorCb_ModePoison(u8 taskId)
+{
+    PartyMenuModeSetStatus(taskId, STATUS1_POISON);
+}
+
+static void CursorCb_ModeFrostbite(u8 taskId)
+{
+    PartyMenuModeSetStatus(taskId, STATUS1_FROSTBITE);
+}
+
+static void CursorCb_ModeBack(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+    OpenPartyMonSelectionSubmenu(taskId, GetPartyMenuActionsType(&gPlayerParty[gPartyMenu.slotId]));
+}
+
+static void PartyMenuModeSetStatus(u8 taskId, u32 status)
+{
+    PlaySE(SE_SELECT);
+    SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status);
+    RefreshSelectedPartyMonDisplay();
+    OpenPartyMonSelectionSubmenu(taskId, ACTIONS_MODE);
+}
+
+static void DisplayPartyModeHpPrompt(void)
+{
+    if (sPartyMenuInternal->windowId[1] != WINDOW_NONE)
+        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+
+    sPartyMenuInternal->windowId[1] = AddWindow(&sDoWhatWithMonMsgWindowTemplate);
+    DrawStdFrameWithCustomTileAndPalette(sPartyMenuInternal->windowId[1], FALSE, 0x4F, 13);
+    AddTextPrinterParameterized(sPartyMenuInternal->windowId[1], FONT_NORMAL, sText_PartyModeHpControls, 0, 1, 0, NULL);
+    ScheduleBgCopyTilemapToVram(2);
+}
+
+static void DrawPartyModeHpWindow(u8 taskId)
+{
+    u16 maxHp = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_MAX_HP);
+    u8 digits = (maxHp >= 1000) ? 4 : 3;
+
+    FillWindowPixelBuffer(sPartyMenuInternal->windowId[0], PIXEL_FILL(1));
+    DrawStdFrameWithCustomTileAndPalette(sPartyMenuInternal->windowId[0], FALSE, 0x4F, 13);
+
+    ConvertIntToDecimalStringN(gStringVar1, gTasks[taskId].tPartyModeHpValue, STR_CONV_MODE_LEADING_ZEROS, digits);
+    StringExpandPlaceholders(gStringVar4, sText_PartyModeHpWindow);
+    AddTextPrinterParameterized(sPartyMenuInternal->windowId[0], FONT_NORMAL, gStringVar4, 0, 1, 0, NULL);
+    CopyWindowToVram(sPartyMenuInternal->windowId[0], COPYWIN_FULL);
+}
+
+static void Task_HandlePartyModeHpInput(u8 taskId)
+{
+    u16 maxHp;
+    u8 maxStepIndex = 0;
+
+    if (gPaletteFade.active || MenuHelpers_ShouldWaitForLinkRecv() == TRUE)
+        return;
+
+    maxHp = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_MAX_HP);
+    while (maxStepIndex + 1 < ARRAY_COUNT(sPartyModeHpSteps)
+        && sPartyModeHpSteps[maxStepIndex + 1] <= maxHp)
+        maxStepIndex++;
+
+    if (JOY_REPEAT(DPAD_UP))
+    {
+        PlaySE(SE_SELECT);
+        gTasks[taskId].tPartyModeHpValue += sPartyModeHpSteps[gTasks[taskId].tPartyModeHpStepIndex];
+        if (gTasks[taskId].tPartyModeHpValue > maxHp)
+            gTasks[taskId].tPartyModeHpValue = maxHp;
+        DrawPartyModeHpWindow(taskId);
+    }
+    else if (JOY_REPEAT(DPAD_DOWN))
+    {
+        PlaySE(SE_SELECT);
+        if (gTasks[taskId].tPartyModeHpValue > sPartyModeHpSteps[gTasks[taskId].tPartyModeHpStepIndex])
+            gTasks[taskId].tPartyModeHpValue -= sPartyModeHpSteps[gTasks[taskId].tPartyModeHpStepIndex];
+        else
+            gTasks[taskId].tPartyModeHpValue = 1;
+        DrawPartyModeHpWindow(taskId);
+    }
+    else if (JOY_REPEAT(DPAD_LEFT))
+    {
+        PlaySE(SE_SELECT);
+        if (gTasks[taskId].tPartyModeHpStepIndex > 0)
+            gTasks[taskId].tPartyModeHpStepIndex--;
+        DrawPartyModeHpWindow(taskId);
+    }
+    else if (JOY_REPEAT(DPAD_RIGHT))
+    {
+        PlaySE(SE_SELECT);
+        if (gTasks[taskId].tPartyModeHpStepIndex < maxStepIndex)
+            gTasks[taskId].tPartyModeHpStepIndex++;
+        DrawPartyModeHpWindow(taskId);
+    }
+    else if (JOY_NEW(A_BUTTON))
+    {
+        u16 hp = gTasks[taskId].tPartyModeHpValue;
+
+        PlaySE(SE_SELECT);
+        SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP, &hp);
+        RefreshSelectedPartyMonDisplay();
+        OpenPartyMonSelectionSubmenu(taskId, ACTIONS_MODE);
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        OpenPartyMonSelectionSubmenu(taskId, ACTIONS_MODE);
+    }
+}
+
+#undef tPartyModeHpValue
+#undef tPartyModeHpStepIndex
 
 void CursorCb_MoveItemCallback(u8 taskId)
 {

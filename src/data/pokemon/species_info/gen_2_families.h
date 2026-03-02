@@ -143,7 +143,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     [SPECIES_MEGANIUM] =
     {
         .baseHP        = 80,
-        .baseAttack    = 85,
+        .baseAttack    = 83,
         .baseDefense   = 100,
         .baseSpeed     = 90,
         .baseSpAttack  = 83,
@@ -162,7 +162,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_TRIAGE },
+        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_SERENE_GRACE },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Meganium"),
         .cryId = CRY_MEGANIUM,
@@ -6134,7 +6134,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sSlugmaLevelUpLearnset,
         .teachableLearnset = sSlugmaTeachableLearnset,
         .eggMoveLearnset = sSlugmaEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_MAGCARGO}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_MAGCARGO}),
     },
 
     [SPECIES_MAGCARGO] =
@@ -7404,7 +7404,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_SAND_VEIL },
+        .abilities = { ABILITY_STURDY, ABILITY_SAND_RUSH, ABILITY_SAND_VEIL },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Phanpy"),
         .cryId = CRY_PHANPY,

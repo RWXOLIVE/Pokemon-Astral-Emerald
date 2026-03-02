@@ -434,6 +434,7 @@ void DrawMultichoiceMenuInternal(u8 left, u8 top, u8 multichoiceId, bool8 ignore
     newWidth = ConvertPixelWidthToTileWidth(width);
     left = ScriptMenu_AdjustLeftCoordFromWidth(left, newWidth);
     windowId = CreateWindowFromRect(left, top, newWidth, count * 2);
+    LoadMessageBoxAndBorderGfx();
     SetStandardWindowBorderStyle(windowId, FALSE);
     PrintMenuTable(windowId, count, actions);
     InitMenuInUpperLeftCornerNormal(windowId, count, cursorPos);
@@ -660,6 +661,7 @@ bool8 ScriptMenu_MultichoiceGrid(u8 left, u8 top, u8 multichoiceId, bool8 ignore
 
         gTasks[taskId].tIgnoreBPress = ignoreBPress;
         gTasks[taskId].tWindowId = CreateWindowFromRect(left, top, columnCount * newWidth, rowCount * 2);
+        LoadMessageBoxAndBorderGfx();
         SetStandardWindowBorderStyle(gTasks[taskId].tWindowId, FALSE);
         PrintMenuGridTable(gTasks[taskId].tWindowId, newWidth * 8, columnCount, rowCount, sMultichoiceLists[multichoiceId].list);
         InitMenuActionGrid(gTasks[taskId].tWindowId, newWidth * 8, columnCount, rowCount, 0);

@@ -914,10 +914,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     [SPECIES_BLASTOISE] =
     {
         .baseHP        = 79,
-        .baseAttack    = 83,
+        .baseAttack    = 84,
         .baseDefense   = 100,
-        .baseSpeed     = 78,
-        .baseSpAttack  = 85,
+        .baseSpeed     = 67,
+        .baseSpAttack  = 95,
         .baseSpDefense = BLASTOISE_SP_DEF,
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 45,

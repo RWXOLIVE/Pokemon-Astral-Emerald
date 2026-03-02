@@ -229,10 +229,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
-      "x": 37,
-      "y": 8,
+      "x": 33,
+      "y": 58,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -275,7 +275,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_ROUTE_104_SOIL_4",
+      "trainer_sight_or_berry_tree_id": "BERRY_TREE_ROUTE_104_ASPEAR",
       "script": "BerryTreeScript",
       "flag": "0"
     },
@@ -307,8 +307,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
-      "x": 8,
-      "y": 19,
+      "x": -7,
+      "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 1,
@@ -437,8 +437,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_2",
-      "x": 5,
-      "y": 26,
+      "x": -7,
+      "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -474,6 +474,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Rival",
       "flag": "FLAG_HIDE_ROUTE_104_RIVAL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(FOONGUS)",
+      "x": 32,
+      "y": 58,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -485,8 +498,8 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 5,
-      "y": 18,
+      "x": -6,
+      "y": 16,
       "elevation": 0,
       "dest_map": "MAP_ROUTE104_PRETTY_PETAL_FLOWER_SHOP",
       "dest_warp_id": "0"
@@ -620,8 +633,8 @@
     },
     {
       "type": "hidden_item",
-      "x": 16,
-      "y": 64,
+      "x": 19,
+      "y": 66,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_HEART_SCALE"

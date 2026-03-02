@@ -41,6 +41,7 @@
 #include "constants/metatile_behaviors.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
+#include "constants/items.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPrevMetatileBehavior = 0;
@@ -94,8 +95,8 @@ void FieldClearPlayerInput(struct FieldInput *input)
     input->heldDirection2 = FALSE;
     input->tookStep = FALSE;
     input->pressedBButton = FALSE;
+    input->pressedLButton = FALSE;
     input->pressedRButton = FALSE;
-    input->input_field_1_1 = FALSE;
     input->input_field_1_2 = FALSE;
     input->input_field_1_3 = FALSE;
     input->dpadDirection = 0;
@@ -119,6 +120,8 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
                 input->pressedAButton = TRUE;
             if (newKeys & B_BUTTON)
                 input->pressedBButton = TRUE;
+            if (newKeys & L_BUTTON)
+                input->pressedLButton = TRUE;
             if (newKeys & R_BUTTON)
                 input->pressedRButton = TRUE;
         }
@@ -210,6 +213,13 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (input->heldDirection && (input->dpadDirection == playerDirection) && (TrySetUpWalkIntoSignpostScript(&position, metatileBehavior, playerDirection) == TRUE))
         return TRUE;
+
+    if (input->pressedLButton)
+    {
+        PlaySE(SE_WIN_OPEN);
+        ScriptContext_SetupScript(QuickMenu_EventScript_Open);
+        return TRUE;
+    }
 
     if (input->pressedAButton && TryStartInteractionScript(&position, metatileBehavior, playerDirection) == TRUE)
         return TRUE;
@@ -563,8 +573,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 
 static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metatileBehavior, u8 direction)
 {
-    if (IsFieldMoveUnlocked(FIELD_MOVE_SURF) && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE
-     && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF)
+    if (((IsFieldMoveUnlocked(FIELD_MOVE_SURF) && PartyHasMonWithSurf() == TRUE) && CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_SURF))
+        || (CheckBagHasItem(ITEM_HM03, 1) && IsPlayerFacingSurfableFishableWater() == TRUE)
      )
         return EventScript_UseSurf;
 

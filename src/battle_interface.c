@@ -207,6 +207,7 @@ static void Task_FreeAbilityPopUpGfx(u8);
 static void SpriteCB_LastUsedBall(struct Sprite *);
 static void SpriteCB_LastUsedBallWin(struct Sprite *);
 static void SpriteCB_MoveInfoWin(struct Sprite *sprite);
+static void DestroyBattleInfoWindow(void);
 
 static const struct OamData sOamData_64x32 =
 {
@@ -2461,7 +2462,10 @@ enum
     TAG_ABILITY_POP_UP_PLAYER2,
     TAG_ABILITY_POP_UP_OPPONENT2,
     TAG_LAST_BALL_WINDOW,
+    TAG_BATTLE_INFO_WINDOW,
 };
+
+static EWRAM_INIT u8 sBattleInfoWidgetSpriteId = MAX_SPRITES;
 
 static const u32 sAbilityPopUpGfx[] = INCBIN_U32("graphics/battle_interface/ability_pop_up.4bpp");
 static const u16 sAbilityPopUpPalette[] = INCBIN_U16("graphics/battle_interface/ability_pop_up.gbapal");
@@ -2830,6 +2834,7 @@ static const struct SpriteTemplate sSpriteTemplate_LastUsedBallWindow =
 };
 
 #define MOVE_INFO_WINDOW_TAG 0xE722
+#define BATTLE_INFO_WINDOW_PALETTE_TAG 0xE723
 
 static const struct OamData sOamData_MoveInfoWindow =
 {
@@ -2848,6 +2853,31 @@ static const struct OamData sOamData_MoveInfoWindow =
     .affineParam = 0,
 };
 
+static const u16 sBattleInfoWindowPalette[] =
+{
+    RGB_BLACK,
+    RGB2GBA(74, 74, 74),
+    RGB2GBA(107, 107, 107),
+    RGB2GBA(140, 140, 140),
+    RGB2GBA(214, 214, 206),
+    RGB2GBA(249, 253, 255),
+    RGB2GBA(90, 90, 90),
+    RGB_BLACK,
+    RGB_BLACK,
+    RGB_BLACK,
+    RGB_BLACK,
+    RGB_BLACK,
+    RGB_BLACK,
+    RGB_BLACK,
+    RGB_BLACK,
+    RGB_BLACK,
+};
+
+static const struct SpritePalette sSpritePalette_BattleInfoWindow =
+{
+    sBattleInfoWindowPalette, BATTLE_INFO_WINDOW_PALETTE_TAG
+};
+
 static const struct SpriteTemplate sSpriteTemplate_MoveInfoWindow =
 {
     .tileTag = MOVE_INFO_WINDOW_TAG,
@@ -2857,6 +2887,17 @@ static const struct SpriteTemplate sSpriteTemplate_MoveInfoWindow =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_MoveInfoWin
+};
+
+static const struct SpriteTemplate sSpriteTemplate_BattleInfoWindow =
+{
+    .tileTag = TAG_BATTLE_INFO_WINDOW,
+    .paletteTag = BATTLE_INFO_WINDOW_PALETTE_TAG,
+    .oam = &sOamData_MoveInfoWindow,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
 };
 
 #if B_LAST_USED_BALL_BUTTON == R_BUTTON && B_LAST_USED_BALL_CYCLE == TRUE
@@ -2882,6 +2923,13 @@ static const u8 sMoveInfoWindowGfx[] = INCBIN_U8("graphics/battle_interface/move
 static const struct SpriteSheet sSpriteSheet_MoveInfoWindow =
 {
     sMoveInfoWindowGfx, sizeof(sMoveInfoWindowGfx), MOVE_INFO_WINDOW_TAG
+};
+
+static const u8 sBattleInfoWindowGfx[] = INCBIN_U8("graphics/battle_interface/move_info_window_r.4bpp");
+
+static const struct SpriteSheet sSpriteSheet_BattleInfoWindow =
+{
+    sBattleInfoWindowGfx, sizeof(sBattleInfoWindowGfx), TAG_BATTLE_INFO_WINDOW
 };
 
 #define LAST_USED_BALL_X_F    14
@@ -3001,9 +3049,24 @@ void TryToAddMoveInfoWindow(void)
     }
 }
 
+void TryToAddBattleInfoWindow(void)
+{
+    LoadSpritePalette(&sSpritePalette_BattleInfoWindow);
+    if (GetSpriteTileStartByTag(TAG_BATTLE_INFO_WINDOW) == 0xFFFF)
+        LoadSpriteSheet(&sSpriteSheet_BattleInfoWindow);
+
+    if (sBattleInfoWidgetSpriteId == MAX_SPRITES)
+        sBattleInfoWidgetSpriteId = CreateSprite(&sSpriteTemplate_BattleInfoWindow, LAST_BALL_WIN_X_F, LAST_USED_WIN_Y + 32, 6);
+}
+
 void TryToHideMoveInfoWindow(void)
 {
     gSprites[gBattleStruct->moveInfoSpriteId].sHide = TRUE;
+}
+
+void TryToHideBattleInfoWindow(void)
+{
+    DestroyBattleInfoWindow();
 }
 
 static void DestroyMoveInfoWinGfx(struct Sprite *sprite)
@@ -3013,6 +3076,18 @@ static void DestroyMoveInfoWinGfx(struct Sprite *sprite)
         FreeSpritePaletteByTag(TAG_ABILITY_POP_UP);
     DestroySprite(sprite);
     gBattleStruct->moveInfoSpriteId = MAX_SPRITES;
+}
+
+static void DestroyBattleInfoWindow(void)
+{
+    if (sBattleInfoWidgetSpriteId != MAX_SPRITES)
+    {
+        DestroySprite(&gSprites[sBattleInfoWidgetSpriteId]);
+        sBattleInfoWidgetSpriteId = MAX_SPRITES;
+    }
+
+    FreeSpriteTilesByTag(TAG_BATTLE_INFO_WINDOW);
+    FreeSpritePaletteByTag(BATTLE_INFO_WINDOW_PALETTE_TAG);
 }
 
 static void SpriteCB_LastUsedBallWin(struct Sprite *sprite)

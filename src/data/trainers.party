@@ -6024,7 +6024,7 @@ Level: 13
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Jolly Nature  
 - Baby-Doll Eyes  
-- Body Slam  
+- Slam  
 - Leer  
 - Bite  
 
@@ -9610,7 +9610,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability / Omniscient / Smart Mon Choices
 
-Grookey
+Chikorita
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
@@ -9775,7 +9775,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability / Omniscient / Smart Mon Choices
 
-Grookey
+Chikorita
 Level: 5
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
@@ -13088,8 +13088,7 @@ AI: Check Bad Move / Try To Faint / Check Viability / Omniscient / Smart Mon Cho
 Lombre @ Lum Berry  
 Ability: Own Tempo  
 Level: 13  
-Timid Nature  
-IVs: 0 Atk  
+Timid Nature    
 - Giga Drain  
 - Water Pulse  
 - Seismic Toss  

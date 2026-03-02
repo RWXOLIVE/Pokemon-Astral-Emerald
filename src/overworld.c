@@ -923,8 +923,11 @@ static void LoadMapFromWarp(bool32 a1)
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
     ResetDexNavSearch();
-    // reset hours override on every warp
-    sHoursOverride = 0;
+    // Reapply the quick-menu time override after every warp.
+    {
+        u16 overrideHour = VarGet(VAR_QOL_TIME_OVERRIDE);
+        sHoursOverride = (overrideHour != 0 && overrideHour <= HOURS_PER_DAY) ? overrideHour - 1 : 0;
+    }
     ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
 #if FREE_MATCH_CALL == FALSE

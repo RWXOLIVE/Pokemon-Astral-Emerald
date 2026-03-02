@@ -731,6 +731,14 @@ struct
     [MENU_CATALOG_MOWER]   = {COMPOUND_STRING("Lawn mower"),      CursorCb_CatalogMower},
     [MENU_CHANGE_FORM]     = {COMPOUND_STRING("Change form"),     CursorCb_ChangeForm},
     [MENU_CHANGE_ABILITY]  = {COMPOUND_STRING("Change Ability"),  CursorCb_ChangeAbility},
+    [MENU_MODE]            = {COMPOUND_STRING("MODE"),            CursorCb_Mode},
+    [MENU_MODE_SET_HP]     = {COMPOUND_STRING("SET HP"),          CursorCb_ModeSetHp},
+    [MENU_MODE_BRN]        = {COMPOUND_STRING("BRN"),             CursorCb_ModeBurn},
+    [MENU_MODE_FRZ]        = {COMPOUND_STRING("FRZ"),             CursorCb_ModeFreeze},
+    [MENU_MODE_PAR]        = {COMPOUND_STRING("PAR"),             CursorCb_ModeParalysis},
+    [MENU_MODE_PSN]        = {COMPOUND_STRING("PSN"),             CursorCb_ModePoison},
+    [MENU_MODE_FRB]        = {COMPOUND_STRING("FRB"),             CursorCb_ModeFrostbite},
+    [MENU_MODE_BACK]       = {COMPOUND_STRING("BACK"),            CursorCb_ModeBack},
 };
 
 static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
@@ -748,6 +756,7 @@ static const u8 sPartyMenuAction_TradeSummaryCancel2[] = {MENU_TRADE2, MENU_SUMM
 static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
 static const u8 sPartyMenuAction_RotomCatalog[] = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_ZygardeCube[] = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_Mode[] = {MENU_MODE_SET_HP, MENU_MODE_BRN, MENU_MODE_FRZ, MENU_MODE_PAR, MENU_MODE_PSN, MENU_MODE_FRB, MENU_MODE_BACK};
 
 
 
@@ -769,6 +778,7 @@ static const u8 *const sPartyMenuActions[] =
     [ACTIONS_TAKEITEM_TOSS] = sPartyMenuAction_TakeItemTossCancel,
     [ACTIONS_ROTOM_CATALOG] = sPartyMenuAction_RotomCatalog,
     [ACTIONS_ZYGARDE_CUBE]  = sPartyMenuAction_ZygardeCube,
+    [ACTIONS_MODE]          = sPartyMenuAction_Mode,
 };
 
 static const u8 sPartyMenuActionCounts[] =
@@ -789,6 +799,7 @@ static const u8 sPartyMenuActionCounts[] =
     [ACTIONS_TAKEITEM_TOSS] = ARRAY_COUNT(sPartyMenuAction_TakeItemTossCancel),
     [ACTIONS_ROTOM_CATALOG] = ARRAY_COUNT(sPartyMenuAction_RotomCatalog),
     [ACTIONS_ZYGARDE_CUBE]  = ARRAY_COUNT(sPartyMenuAction_ZygardeCube),
+    [ACTIONS_MODE]          = ARRAY_COUNT(sPartyMenuAction_Mode),
 };
 
 static const u8 *const sUnionRoomTradeMessages[] =

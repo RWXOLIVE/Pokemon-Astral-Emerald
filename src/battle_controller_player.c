@@ -3,6 +3,7 @@
 #include "battle_anim.h"
 #include "battle_arena.h"
 #include "battle_controllers.h"
+#include "battle_info.h"
 #include "battle_dome.h"
 #include "battle_interface.h"
 #include "battle_message.h"
@@ -75,6 +76,7 @@ static void PlayerHandleLinkStandbyMsg(u32 battler);
 static void PlayerHandleResetActionMoveSelection(u32 battler);
 static void PlayerHandleEndLinkBattle(u32 battler);
 static void PlayerHandleBattleDebug(u32 battler);
+static void Controller_WaitForBattleInfo(u32 battler);
 
 static void PlayerBufferRunCommand(u32 battler);
 static void MoveSelectionDisplayPpNumber(u32 battler);
@@ -242,6 +244,18 @@ static void HandleInputChooseAction(u32 battler)
     else
         gPlayerDpadHoldFrames = 0;
 
+    if (BattleInfo_IsAvailable() && JOY_NEW(R_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        TryHideLastUsedBall();
+        BattleInfo_HideActionHint();
+        BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
+        gBattlerInMenuId = battler;
+        OpenBattleInfoMenu(battler);
+        gBattlerControllerFuncs[battler] = Controller_WaitForBattleInfo;
+        return;
+    }
+
     if (B_LAST_USED_BALL == TRUE && B_LAST_USED_BALL_CYCLE == TRUE
     && !(B_LAST_USED_BALL_BUTTON == L_BUTTON && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A))
     {
@@ -305,6 +319,7 @@ static void HandleInputChooseAction(u32 battler)
     {
         PlaySE(SE_SELECT);
         TryHideLastUsedBall();
+        BattleInfo_HideActionHint();
 
         switch (gActionSelectionCursor[battler])
         {
@@ -376,6 +391,7 @@ static void HandleInputChooseAction(u32 battler)
                 AddBagItem(itemId, 1);
             }
             PlaySE(SE_SELECT);
+            BattleInfo_HideActionHint();
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_CANCEL_PARTNER, 0);
             BtlController_Complete(battler);
         }
@@ -396,6 +412,7 @@ static void HandleInputChooseAction(u32 battler)
     }
     else if (DEBUG_BATTLE_MENU == TRUE && JOY_NEW(SELECT_BUTTON))
     {
+        BattleInfo_HideActionHint();
         BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_DEBUG, 0);
         BtlController_Complete(battler);
     }
@@ -404,6 +421,7 @@ static void HandleInputChooseAction(u32 battler)
     {
         PlaySE(SE_SELECT);
         TryHideLastUsedBall();
+        BattleInfo_HideActionHint();
         BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_THROW_BALL, 0);
         BtlController_Complete(battler);
     }
@@ -1984,6 +2002,10 @@ static void HandleChooseActionAfterDma3(u32 battler)
                 BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_ACTION_PROMPT);
             }
         }
+        if (BattleInfo_IsAvailable())
+            BattleInfo_ShowActionHint();
+        else
+            TryRestoreLastUsedBall();
         gBattlerControllerFuncs[battler] = HandleInputChooseAction;
     }
 }
@@ -1994,12 +2016,13 @@ static void PlayerHandleChooseAction(u32 battler)
 
     gBattlerControllerFuncs[battler] = HandleChooseActionAfterDma3;
     BattleTv_ClearExplosionFaintCause();
+    if (BattleInfo_IsAvailable())
+        BattleInfo_HideActionHint();
     BattlePutTextOnWindow(gText_BattleMenu, B_WIN_ACTION_MENU);
 
     for (i = 0; i < 4; i++)
         ActionSelectionDestroyCursorAt(i);
 
-    TryRestoreLastUsedBall();
     ActionSelectionCreateCursorAt(gActionSelectionCursor[battler], 0);
     PREPARE_MON_NICK_BUFFER(gBattleTextBuff1, battler, gBattlerPartyIndexes[battler]);
     BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillPkmnDo);
@@ -2333,6 +2356,14 @@ static void Controller_WaitForDebug(u32 battler)
     if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
     {
         BtlController_Complete(battler);
+    }
+}
+
+static void Controller_WaitForBattleInfo(u32 battler)
+{
+    if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
+    {
+        PlayerHandleChooseAction(battler);
     }
 }
 

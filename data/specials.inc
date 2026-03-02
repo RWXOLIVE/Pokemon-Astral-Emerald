@@ -227,6 +227,10 @@ gSpecials::
 	def_special ShowPokedexRatingMessage
 	def_special DoPCTurnOnEffect
 	def_special DoPCTurnOffEffect
+	def_special QuickMenu_ToggleInfiniteRepel
+	def_special QuickMenu_SetTimeOverride
+	def_special QuickMenu_OpenEncounterViewer
+	def_special QuickMenu_OpenFlyMap
 	def_special SetDeptStoreFloor
 	def_special DoLotteryCornerComputerEffect
 	def_special EndLotteryCornerComputerEffect

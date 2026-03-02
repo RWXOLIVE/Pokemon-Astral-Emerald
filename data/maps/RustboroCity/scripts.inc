@@ -312,6 +312,10 @@ RustboroCity_EventScript_StolenGoodsScene::
 	releaseall
 	end
 
+Rustboro_EventScript_TyrantrumStatue::
+	msgbox Text_TyrantrumStatue, MSGBOX_SIGN
+	end
+
 @ Unused
 RustboroCity_EventScript_ShadyCharacterTookOff::
 	msgbox RustboroCity_Text_ShadyCharacterTookOffTowardsTunnel, MSGBOX_DEFAULT
@@ -1234,8 +1238,9 @@ RustboroCity_Text_DevonCorpSign:
 
 RustboroCity_Text_GymSign:
 	.string "RUSTBORO CITY POKéMON GYM\n"
-	.string "LEADER: ROXANNE\p"
-	.string "“The ROCK-loving honors student!”$"
+	.string "LEADERS: ROXANNE AND BROCK\p"
+	.string "“The ROCK-loving student\n"
+	.string "“and Kanto's LEADER”.$"
 
 RustboroCity_Text_DevonCorpBranchOfficeSign:
 	.string "DEVON CORP. BRANCH OFFICE\p"
@@ -1290,3 +1295,7 @@ RustboroCity_Text_YouCanHave2On2Battle:
 	.string "they'll both challenge you.\p"
 	.string "Don't you think it'd be cool if you\n"
 	.string "could beat two TRAINERS by yourself?$"
+
+Text_TyrantrumStatue:
+	.string "TYRANTRUM STATUE\n"
+	.string "excavated by LEADER BROCK.$"
