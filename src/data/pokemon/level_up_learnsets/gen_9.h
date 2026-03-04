@@ -13211,12 +13211,12 @@ static const struct LevelUpMove sShiinoticLevelUpLearnset[] = {
 #if P_FAMILY_SALANDIT
 static const struct LevelUpMove sSalanditLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_SCRATCH),
-    LEVEL_UP_MOVE( 1, MOVE_POISON_GAS),
+    LEVEL_UP_MOVE( 1, MOVE_TOXIC),
     LEVEL_UP_MOVE( 5, MOVE_EMBER),
     LEVEL_UP_MOVE( 8, MOVE_POISON_FANG),
     LEVEL_UP_MOVE(14, MOVE_FLAME_BURST),
     LEVEL_UP_MOVE(18, MOVE_TORMENT),
-    LEVEL_UP_MOVE(23, MOVE_TOXIC), //moveset done
+    LEVEL_UP_MOVE(23, MOVE_POISON_GAS), //moveset done
     LEVEL_UP_MOVE(25, MOVE_DRAGON_BREATH),
     LEVEL_UP_MOVE(30, MOVE_VENOSHOCK),
     LEVEL_UP_MOVE(35, MOVE_FLAMETHROWER),
@@ -15215,7 +15215,7 @@ static const struct LevelUpMove sSmolivLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sDollivLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_SWEET_SCENT),
+    LEVEL_UP_MOVE( 0, MOVE_DRAINING_KISS),
     LEVEL_UP_MOVE( 1, MOVE_MAGICAL_LEAF),
     LEVEL_UP_MOVE( 3, MOVE_ECHOED_VOICE),
     LEVEL_UP_MOVE( 9, MOVE_CONFIDE),

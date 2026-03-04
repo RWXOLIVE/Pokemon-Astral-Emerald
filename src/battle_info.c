@@ -201,7 +201,7 @@ bool32 BattleInfo_IsAvailable(void)
                                                   | BATTLE_TYPE_RECORDED
                                                   | BATTLE_TYPE_RECORDED_LINK
                                                   | BATTLE_TYPE_SAFARI
-                                                  | BATTLE_TYPE_WALLY_TUTORIAL)) != 0;
+                                                  | BATTLE_TYPE_CATCH_TUTORIAL)) != 0;
 
     return isTrainerStyleBattle && !isUnsupportedBattle;
 }
@@ -621,7 +621,7 @@ static const u8 *GetBattlerDisplayName(u8 battler)
 
 static u16 GetMoveDamageRoll(u8 battlerAtk, u8 battlerDef, u16 move, u8 rollPercentage)
 {
-    struct DamageContext ctx = {0};
+    struct BattleContext ctx = {0};
     enum Type oldDynamicMoveType;
     bool8 oldSwapDamageCategory;
     u8 oldMagnitudeBasePower;
@@ -633,7 +633,7 @@ static u16 GetMoveDamageRoll(u8 battlerAtk, u8 battlerDef, u16 move, u8 rollPerc
         return 0;
 
     if (GetMoveEffect(move) == EFFECT_NATURE_POWER)
-        move = GetNaturePowerMove(battlerAtk);
+        move = GetNaturePowerMove();
 
     oldDynamicMoveType = gBattleStruct->dynamicMoveType;
     oldSwapDamageCategory = gBattleStruct->swapDamageCategory;
@@ -651,6 +651,7 @@ static u16 GetMoveDamageRoll(u8 battlerAtk, u8 battlerDef, u16 move, u8 rollPerc
     ctx.battlerDef = battlerDef;
     ctx.move = ctx.chosenMove = move;
     ctx.moveType = GetBattleMoveType(move);
+    ctx.fieldStatuses = gFieldStatuses;
     ctx.isCrit = FALSE;
     ctx.randomFactor = FALSE;
     ctx.updateFlags = FALSE;

@@ -571,12 +571,12 @@ static const struct WindowTemplate sLevelUpStatsWindowTemplate =
     .baseBlock = 0x2E9,
 };
 
-static const struct WindowTemplate sUnusedWindowTemplate1 =
+static const struct WindowTemplate sWindowTemplate_FirstBattleOakVoiceover =
 {
     .bg = 2,
     .tilemapLeft = 2,
     .tilemapTop = 15,
-    .width = 27,
+    .width = 26,
     .height = 4,
     .paletteNum = 14,
     .baseBlock = 0x1DF,
@@ -719,9 +719,9 @@ struct
     [MENU_TRADE2]          = {sText_Trade4,                       CursorCb_Trade2},
     [MENU_TOSS]            = {gMenuText_Toss,                     CursorCb_Toss},
     [MENU_LEVEL_UP_MOVES]  = {COMPOUND_STRING("LEVEL MOVES"),     CursorCb_ChangeLevelUpMoves},
-	[MENU_EGG_MOVES]       = {COMPOUND_STRING("EGG MOVES"),       CursorCb_ChangeEggMoves},
-	[MENU_TM_MOVES]        = {COMPOUND_STRING("TM MOVES"),        CursorCb_ChangeTMMoves},
-	[MENU_TUTOR_MOVES]     = {COMPOUND_STRING("TUTOR MOVES"),     CursorCb_ChangeTutorMoves},
+    [MENU_EGG_MOVES]       = {COMPOUND_STRING("EGG MOVES"),       CursorCb_ChangeEggMoves},
+    [MENU_TM_MOVES]        = {COMPOUND_STRING("TM MOVES"),        CursorCb_ChangeTMMoves},
+    [MENU_TUTOR_MOVES]     = {COMPOUND_STRING("TUTOR MOVES"),     CursorCb_ChangeTutorMoves},
     [MENU_SUB_MOVES]       = {COMPOUND_STRING("LEARN MOVES"),     CursorCb_LearnMovesSubMenu},
     [MENU_CATALOG_BULB]    = {COMPOUND_STRING("Light bulb"),      CursorCb_CatalogBulb},
     [MENU_CATALOG_OVEN]    = {COMPOUND_STRING("Microwave oven"),  CursorCb_CatalogOven},
@@ -733,6 +733,7 @@ struct
     [MENU_CHANGE_ABILITY]  = {COMPOUND_STRING("Change Ability"),  CursorCb_ChangeAbility},
     [MENU_MODE]            = {COMPOUND_STRING("MODE"),            CursorCb_Mode},
     [MENU_MODE_SET_HP]     = {COMPOUND_STRING("SET HP"),          CursorCb_ModeSetHp},
+    [MENU_MODE_SLP]        = {COMPOUND_STRING("SLP"),             CursorCb_ModeSleep},
     [MENU_MODE_BRN]        = {COMPOUND_STRING("BRN"),             CursorCb_ModeBurn},
     [MENU_MODE_FRZ]        = {COMPOUND_STRING("FRZ"),             CursorCb_ModeFreeze},
     [MENU_MODE_PAR]        = {COMPOUND_STRING("PAR"),             CursorCb_ModeParalysis},
@@ -756,7 +757,7 @@ static const u8 sPartyMenuAction_TradeSummaryCancel2[] = {MENU_TRADE2, MENU_SUMM
 static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
 static const u8 sPartyMenuAction_RotomCatalog[] = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_ZygardeCube[] = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_Mode[] = {MENU_MODE_SET_HP, MENU_MODE_BRN, MENU_MODE_FRZ, MENU_MODE_PAR, MENU_MODE_PSN, MENU_MODE_FRB, MENU_MODE_BACK};
+static const u8 sPartyMenuAction_Mode[] = {MENU_MODE_SET_HP, MENU_MODE_SLP, MENU_MODE_BRN, MENU_MODE_FRZ, MENU_MODE_PAR, MENU_MODE_PSN, MENU_MODE_FRB, MENU_MODE_BACK};
 
 
 
@@ -869,9 +870,6 @@ static const struct SpriteTemplate sSpriteTemplate_HeldItem =
     .paletteTag = TAG_HELD_ITEM,
     .oam = &sOamData_HeldItem,
     .anims = sSpriteAnimTable_HeldItem,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
 };
 
 static const struct OamData sOamData_MenuPokeball =
@@ -926,9 +924,6 @@ static const struct SpriteTemplate sSpriteTemplate_MenuPokeball =
     .paletteTag = TAG_POKEBALL,
     .oam = &sOamData_MenuPokeball,
     .anims = sSpriteAnimTable_MenuPokeball,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
 };
 
 static const struct OamData sOamData_MenuPokeballSmall =
@@ -1007,9 +1002,6 @@ static const struct SpriteTemplate sSpriteTemplate_MenuPokeballSmall =
     .paletteTag = TAG_POKEBALL,
     .oam = &sOamData_MenuPokeballSmall,
     .anims = sSpriteAnimTable_MenuPokeballSmall,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
 };
 
 static const struct OamData sOamData_StatusCondition =
@@ -1105,9 +1097,6 @@ const struct SpriteTemplate gSpriteTemplate_StatusIcons =
     .paletteTag = TAG_STATUS_ICONS,
     .oam = &sOamData_StatusCondition,
     .anims = sSpriteTemplate_StatusCondition,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
 };
 
 static const u8 *const sUnused_StatStrings[] =

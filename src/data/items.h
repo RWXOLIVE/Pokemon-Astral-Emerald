@@ -91,6 +91,22 @@ static const u8 sMewtwoniteDesc[]     = _("This stone enables\n"
                                           "Mewtwo to Mega\n"
                                           "Evolve in battle.");
 
+static const u8 sRaichuniteDesc[]     = _("This stone enables\n"
+                                          "Raichu to Mega\n"
+                                          "Evolve in battle.");
+
+static const u8 sAbsoliteDesc[]       = _("This stone enables\n"
+                                          "Absol to Mega\n"
+                                          "Evolve in battle.");
+
+static const u8 sGarchompiteDesc[]    = _("This stone enables\n"
+                                          "Garchomp to Mega\n"
+                                          "Evolve in battle.");
+
+static const u8 sLucarioniteDesc[]    = _("This stone enables\n"
+                                          "Lucario to Mega\n"
+                                          "Evolve in battle.");
+
 static const u8 sSeaIncenseDesc[]     = _("A hold item that\n"
                                           "slightly boosts\n"
                                           "Water-type moves.");
@@ -151,7 +167,7 @@ static const u8 sInfiniteRepelDesc[] = _("Repels all wild\n"
                                           "Pokemon for any\n"
                                           "number of steps");
 
-const struct Item gItemsInfo[] =
+const struct ItemInfo gItemsInfo[] =
 {
     [ITEM_NONE] =
     {
@@ -816,17 +832,14 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Lemonade"),
         .price = (I_PRICE >= GEN_7) ? 400 : 350,
         .holdEffectParam = 70,
-#if I_HEALTH_RECOVERY >= GEN_7
         .description = COMPOUND_STRING(
             "A very sweet drink\n"
             "that restores HP\n"
+        #if I_HEALTH_RECOVERY >= GEN_7
             "by 70 points."),
-#else
-        .description = COMPOUND_STRING(
-            "A very sweet drink\n"
-            "that restores HP\n"
+        #else
             "by 80 points."),
-#endif
+        #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HEALTH_RECOVERY,
         .type = ITEM_USE_PARTY_MENU,
@@ -2384,15 +2397,15 @@ const struct Item gItemsInfo[] =
             "Use to escape\n"
             "instantly from a\n"
             "cave or a dungeon."),
-        #if I_KEY_ESCAPE_ROPE >= GEN_8
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #else
-            .price = (I_PRICE >= GEN_7) ? 1000 : 550,
-            .pocket = POCKET_ITEMS,
-            .sortType = ITEM_TYPE_FIELD_USE,
-        #endif
+    #if I_KEY_ESCAPE_ROPE >= GEN_8
+        .price = 0,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+    #else
+        .price = (I_PRICE >= GEN_7) ? 1000 : 550,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_FIELD_USE,
+    #endif
         .type = ITEM_USE_FIELD,
         .fieldUseFunc = ItemUseOutOfBattle_EscapeRope,
         .flingPower = 30,
@@ -2419,7 +2432,7 @@ const struct Item gItemsInfo[] =
         #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_X_ITEM,
-        .type = ITEM_USE_BAG_MENU,
+        .type = B_X_ITEMS_CROSSUSE ? ITEM_USE_BATTLER : ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .effect = gItemEffect_XAttack,
@@ -2445,7 +2458,7 @@ const struct Item gItemsInfo[] =
         #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_X_ITEM,
-        .type = ITEM_USE_BAG_MENU,
+        .type = B_X_ITEMS_CROSSUSE ? ITEM_USE_BATTLER : ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .effect = gItemEffect_XDefense,
@@ -2471,7 +2484,7 @@ const struct Item gItemsInfo[] =
         #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_X_ITEM,
-        .type = ITEM_USE_BAG_MENU,
+        .type = B_X_ITEMS_CROSSUSE ? ITEM_USE_BATTLER : ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .effect = gItemEffect_XSpecialAttack,
@@ -2497,7 +2510,7 @@ const struct Item gItemsInfo[] =
         #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_X_ITEM,
-        .type = ITEM_USE_BAG_MENU,
+        .type = B_X_ITEMS_CROSSUSE ? ITEM_USE_BATTLER : ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .effect = gItemEffect_XSpecialDefense,
@@ -2523,7 +2536,7 @@ const struct Item gItemsInfo[] =
         #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_X_ITEM,
-        .type = ITEM_USE_BAG_MENU,
+        .type = B_X_ITEMS_CROSSUSE ? ITEM_USE_BATTLER : ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .effect = gItemEffect_XSpeed,
@@ -2538,7 +2551,7 @@ const struct Item gItemsInfo[] =
         .pluralName = ITEM_PLURAL_NAME("X Accuracies"),
         .price = (I_PRICE >= GEN_7) ? 1000 : 950,
         .holdEffectParam = X_ITEM_STAGES,
-            .description = COMPOUND_STRING(
+        .description = COMPOUND_STRING(
         #if B_X_ITEMS_BUFF >= GEN_7
             "Sharply raises move\n"
             "accuracy during\n"
@@ -2550,7 +2563,7 @@ const struct Item gItemsInfo[] =
         #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_X_ITEM,
-        .type = ITEM_USE_BAG_MENU,
+        .type = B_X_ITEMS_CROSSUSE ? ITEM_USE_BATTLER : ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = EFFECT_ITEM_INCREASE_STAT,
         .effect = gItemEffect_XAccuracy,
@@ -2569,7 +2582,7 @@ const struct Item gItemsInfo[] =
             "during one battle."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_X_ITEM,
-        .type = ITEM_USE_BAG_MENU,
+        .type = B_X_ITEMS_CROSSUSE ? ITEM_USE_BATTLER : ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = EFFECT_ITEM_SET_FOCUS_ENERGY,
         .effect = gItemEffect_DireHit,
@@ -2660,7 +2673,7 @@ const struct Item gItemsInfo[] =
             "by one stage."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_BATTLE_ITEM,
-        .type = ITEM_USE_BAG_MENU,
+        .type = B_X_ITEMS_CROSSUSE ? ITEM_USE_BATTLER : ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = EFFECT_ITEM_INCREASE_ALL_STATS,
         .flingPower = 30,
@@ -3240,15 +3253,15 @@ const struct Item gItemsInfo[] =
             "A piece of an\n"
             "ancient marine\n"
             "Pokémon's seashell."),
-        #if I_KEY_FOSSILS >= GEN_4
-            .price = (I_PRICE >= GEN_7) ? 7000: 1000,
-            .pocket = POCKET_ITEMS,
-            .sortType = ITEM_TYPE_FOSSIL,
-        #else
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #endif
+    #if I_KEY_FOSSILS >= GEN_4
+        .price = (I_PRICE >= GEN_7) ? 7000: 1000,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_FOSSIL,
+    #else
+        .price = 0,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+    #endif
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 100,
@@ -3263,15 +3276,15 @@ const struct Item gItemsInfo[] =
             "A piece of an\n"
             "ancient marine\n"
             "Pokémon's shell."),
-        #if I_KEY_FOSSILS >= GEN_4
-            .price = (I_PRICE >= GEN_7) ? 7000: 1000,
-            .pocket = POCKET_ITEMS,
-            .sortType = ITEM_TYPE_FOSSIL,
-        #else
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #endif
+    #if I_KEY_FOSSILS >= GEN_4
+        .price = (I_PRICE >= GEN_7) ? 7000: 1000,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_FOSSIL,
+    #else
+        .price = 0,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+    #endif
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 100,
@@ -3286,15 +3299,15 @@ const struct Item gItemsInfo[] =
             "A stone containing\n"
             "the genes of an\n"
             "ancient Pokémon."),
-        #if I_KEY_FOSSILS >= GEN_4
-            .price = 1000,
-            .pocket = POCKET_ITEMS,
-            .sortType = ITEM_TYPE_FOSSIL,
-        #else
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #endif
+    #if I_KEY_FOSSILS >= GEN_4
+        .price = 1000,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_FOSSIL,
+    #else
+        .price = 0,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+    #endif
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 100,
@@ -3306,15 +3319,15 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Root Fossil"),
         .description = sRootFossilDesc,
-        #if I_KEY_FOSSILS >= GEN_4
-            .price = (I_PRICE >= GEN_7) ? 7000: 1000,
-            .pocket = POCKET_ITEMS,
-            .sortType = ITEM_TYPE_FOSSIL,
-        #else
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #endif
+    #if I_KEY_FOSSILS >= GEN_4
+        .price = (I_PRICE >= GEN_7) ? 7000: 1000,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_FOSSIL,
+    #else
+        .price = 0,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+    #endif
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 100,
@@ -3326,15 +3339,15 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Claw Fossil"),
         .description = sRootFossilDesc,
-        #if I_KEY_FOSSILS >= GEN_4
-            .price = (I_PRICE >= GEN_7) ? 7000: 1000,
-            .pocket = POCKET_ITEMS,
-            .sortType = ITEM_TYPE_FOSSIL,
-        #else
-            .price = 0,
-            .importance = 1,
-            .pocket = POCKET_KEY_ITEMS,
-        #endif
+    #if I_KEY_FOSSILS >= GEN_4
+        .price = (I_PRICE >= GEN_7) ? 7000: 1000,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_FOSSIL,
+    #else
+        .price = 0,
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+    #endif
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 100,
@@ -3514,14 +3527,14 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Growth Mulch"),
         .pluralName = ITEM_PLURAL_NAME("Growth Mulch"),
         .price = 200,
-#if OW_BERRY_MULCH_USAGE == TRUE
+    #if OW_BERRY_MULCH_USAGE == TRUE
         .description = COMPOUND_STRING(
             "A fertilizer that\n"
             "accelerates the\n"
             "growth of Berries."),
-#else
+    #else
         .description = sGenericMulchDesc,
-#endif
+    #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_GROWTH,
         .type = ITEM_USE_BAG_MENU,
@@ -3537,14 +3550,14 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Damp Mulch"),
         .pluralName = ITEM_PLURAL_NAME("Damp Mulch"),
         .price = 200,
-#if OW_BERRY_MULCH_USAGE == TRUE
+    #if OW_BERRY_MULCH_USAGE == TRUE
         .description = COMPOUND_STRING(
             "A fertilizer that\n"
             "decelerates the\n"
             "growth of Berries."),
-#else
+    #else
         .description = sGenericMulchDesc,
-#endif
+    #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_GROWTH,
         .type = ITEM_USE_BAG_MENU,
@@ -3560,14 +3573,14 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Stable Mulch"),
         .pluralName = ITEM_PLURAL_NAME("Stable Mulch"),
         .price = 200,
-#if OW_BERRY_MULCH_USAGE == TRUE
+    #if OW_BERRY_MULCH_USAGE == TRUE
         .description = COMPOUND_STRING(
             "A fertilizer that\n"
             "ups the life time\n"
             "of Berry trees."),
-#else
+    #else
         .description = sGenericMulchDesc,
-#endif
+    #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_GROWTH,
         .type = ITEM_USE_BAG_MENU,
@@ -3583,14 +3596,14 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Gooey Mulch"),
         .pluralName = ITEM_PLURAL_NAME("Gooey Mulch"),
         .price = 200,
-#if OW_BERRY_MULCH_USAGE == TRUE
+    #if OW_BERRY_MULCH_USAGE == TRUE
         .description = COMPOUND_STRING(
             "A fertilizer that\n"
             "makes more Berries\n"
             "regrow after fall."),
-#else
+    #else
         .description = sGenericMulchDesc,
-#endif
+    #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_GROWTH,
         .type = ITEM_USE_BAG_MENU,
@@ -3606,14 +3619,14 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Rich Mulch"),
         .pluralName = ITEM_PLURAL_NAME("Rich Mulch"),
         .price = 200,
-#if OW_BERRY_MULCH_USAGE == TRUE
+    #if OW_BERRY_MULCH_USAGE == TRUE
         .description = COMPOUND_STRING(
             "A fertilizer that\n"
             "ups the number of\n"
             "Berries harvested."),
-#else
+    #else
         .description = sGenericMulchDesc,
-#endif
+    #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_GROWTH,
         .type = ITEM_USE_BAG_MENU,
@@ -3629,14 +3642,14 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Surprise Mulch"),
         .pluralName = ITEM_PLURAL_NAME("Surprise Mulch"),
         .price = 200,
-#if OW_BERRY_MULCH_USAGE == TRUE
+    #if OW_BERRY_MULCH_USAGE == TRUE
         .description = COMPOUND_STRING(
             "A fertilizer that\n"
             "ups the chance of\n"
             "Berry mutations."),
-#else
+    #else
         .description = sGenericMulchDesc,
-#endif
+    #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_GROWTH,
         .type = ITEM_USE_BAG_MENU,
@@ -3652,14 +3665,14 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Boost Mulch"),
         .pluralName = ITEM_PLURAL_NAME("Boost Mulch"),
         .price = 200,
-#if OW_BERRY_MULCH_USAGE == TRUE
+    #if OW_BERRY_MULCH_USAGE == TRUE
         .description = COMPOUND_STRING(
             "A fertilizer that\n"
             "ups the dry speed\n"
             "of soft soil."),
-#else
+    #else
         .description = sGenericMulchDesc,
-#endif
+    #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_GROWTH,
         .type = ITEM_USE_BAG_MENU,
@@ -3675,14 +3688,14 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Amaze Mulch"),
         .pluralName = ITEM_PLURAL_NAME("Amaze Mulch"),
         .price = 200,
-#if OW_BERRY_MULCH_USAGE == TRUE
+    #if OW_BERRY_MULCH_USAGE == TRUE
         .description = COMPOUND_STRING(
             "A fertilizer Rich\n"
             "Surprising and\n"
             "Boosting as well."),
-#else
+    #else
         .description = sGenericMulchDesc,
-#endif
+    #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_GROWTH,
         .type = ITEM_USE_BAG_MENU,
@@ -4368,7 +4381,6 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Dragon Scale"),
         .price = (I_PRICE >= GEN_7) ? 2000 * TREASURE_FACTOR : 2100,
-        .holdEffect = HOLD_EFFECT_DRAGON_SCALE,
         .holdEffectParam = 10,
         .description = COMPOUND_STRING(
             "A strange scale\n"
@@ -4388,7 +4400,6 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Upgrade"),
         .price = (I_PRICE >= GEN_7) ? 2000 * TREASURE_FACTOR : 2100,
-        .holdEffect = HOLD_EFFECT_UPGRADE,
         .description = COMPOUND_STRING(
             "A peculiar box made\n"
             "by Silph Co."),
@@ -6223,10 +6234,7 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Absolite"),
         .price = 0,
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = COMPOUND_STRING(
-            "This stone enables\n"
-            "Absol to Mega\n"
-            "Evolve in battle."),
+        .description = sAbsoliteDesc,
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MEGA_STONE,
         .type = ITEM_USE_BAG_MENU,
@@ -6349,10 +6357,7 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Garchompite"),
         .price = 0,
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = COMPOUND_STRING(
-            "This stone enables\n"
-            "Garchomp to Mega\n"
-            "Evolve in battle."),
+        .description = sGarchompiteDesc,
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MEGA_STONE,
         .type = ITEM_USE_BAG_MENU,
@@ -6367,10 +6372,7 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Lucarionite"),
         .price = 0,
         .holdEffect = HOLD_EFFECT_MEGA_STONE,
-        .description = COMPOUND_STRING(
-            "This stone enables\n"
-            "Lucario to Mega\n"
-            "Evolve in battle."),
+        .description = sLucarioniteDesc,
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MEGA_STONE,
         .type = ITEM_USE_BAG_MENU,
@@ -6466,8 +6468,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Clefablite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Clefablite,
+        .iconPic = gItemIcon_Clefablite,
+        .iconPalette = gItemIconPalette_Clefablite,
     },
 
     [ITEM_VICTREEBELITE] =
@@ -6484,8 +6486,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Victreebelite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Victreebelite,
+        .iconPic = gItemIcon_Victreebelite,
+        .iconPalette = gItemIconPalette_Victreebelite,
     },
 
     [ITEM_STARMINITE] =
@@ -6502,8 +6504,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Starminite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Starminite,
+        .iconPic = gItemIcon_Starminite,
+        .iconPalette = gItemIconPalette_Starminite,
     },
 
     [ITEM_DRAGONINITE] =
@@ -6520,8 +6522,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Dragoninite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Dragoninite,
+        .iconPic = gItemIcon_Dragoninite,
+        .iconPalette = gItemIconPalette_Dragoninite,
     },
 
     [ITEM_MEGANIUMITE] =
@@ -6538,8 +6540,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Meganiumite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Meganiumite,
+        .iconPic = gItemIcon_Meganiumite,
+        .iconPalette = gItemIconPalette_Meganiumite,
     },
 
     [ITEM_FERALIGITE] =
@@ -6556,8 +6558,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Feraligite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Feraligite,
+        .iconPic = gItemIcon_Feraligite,
+        .iconPalette = gItemIconPalette_Feraligite,
     },
 
     [ITEM_SKARMORITE] =
@@ -6574,8 +6576,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Skarmorite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Skarmorite,
+        .iconPic = gItemIcon_Skarmorite,
+        .iconPalette = gItemIconPalette_Skarmorite,
     },
 
     [ITEM_FROSLASSITE] =
@@ -6592,8 +6594,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Froslassite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Froslassite,
+        .iconPic = gItemIcon_Froslassite,
+        .iconPalette = gItemIconPalette_Froslassite,
     },
 
     [ITEM_EMBOARITE] =
@@ -6610,8 +6612,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Emboarite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Emboarite,
+        .iconPic = gItemIcon_Emboarite,
+        .iconPalette = gItemIconPalette_Emboarite,
     },
 
     [ITEM_EXCADRITE] =
@@ -6628,8 +6630,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Excadrite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Excadrite,
+        .iconPic = gItemIcon_Excadrite,
+        .iconPalette = gItemIconPalette_Excadrite,
     },
 
     [ITEM_SCOLIPITE] =
@@ -6646,8 +6648,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Scolipite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Scolipite,
+        .iconPic = gItemIcon_Scolipite,
+        .iconPalette = gItemIconPalette_Scolipite,
     },
 
     [ITEM_SCRAFTINITE] =
@@ -6664,8 +6666,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Scraftinite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Scraftinite,
+        .iconPic = gItemIcon_Scraftinite,
+        .iconPalette = gItemIconPalette_Scraftinite,
     },
 
     [ITEM_EELEKTROSSITE] =
@@ -6682,8 +6684,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Eelektrossite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Eelektrossite,
+        .iconPic = gItemIcon_Eelektrossite,
+        .iconPalette = gItemIconPalette_Eelektrossite,
     },
 
     [ITEM_CHANDELURITE] =
@@ -6700,8 +6702,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Chandelurite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Chandelurite,
+        .iconPic = gItemIcon_Chandelurite,
+        .iconPalette = gItemIconPalette_Chandelurite,
     },
 
     [ITEM_CHESNAUGHTITE] =
@@ -6718,8 +6720,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Chesnaughtite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Chesnaughtite,
+        .iconPic = gItemIcon_Chesnaughtite,
+        .iconPalette = gItemIconPalette_Chesnaughtite,
     },
 
     [ITEM_DELPHOXITE] =
@@ -6736,8 +6738,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Delphoxite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Delphoxite,
+        .iconPic = gItemIcon_Delphoxite,
+        .iconPalette = gItemIconPalette_Delphoxite,
     },
 
     [ITEM_GRENINJITE] =
@@ -6754,8 +6756,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Greninjite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Greninjite,
+        .iconPic = gItemIcon_Greninjite,
+        .iconPalette = gItemIconPalette_Greninjite,
     },
 
     [ITEM_PYROARITE] =
@@ -6772,8 +6774,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Pyroarite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Pyroarite,
+        .iconPic = gItemIcon_Pyroarite,
+        .iconPalette = gItemIconPalette_Pyroarite,
     },
 
     [ITEM_FLOETTITE] =
@@ -6790,8 +6792,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Floettite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Floettite,
+        .iconPic = gItemIcon_Floettite,
+        .iconPalette = gItemIconPalette_Floettite,
     },
 
     [ITEM_MALAMARITE] =
@@ -6808,8 +6810,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Malamarite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Malamarite,
+        .iconPic = gItemIcon_Malamarite,
+        .iconPalette = gItemIconPalette_Malamarite,
     },
 
     [ITEM_BARBARACITE] =
@@ -6826,8 +6828,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Barbaracite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Barbaracite,
+        .iconPic = gItemIcon_Barbaracite,
+        .iconPalette = gItemIconPalette_Barbaracite,
     },
 
     [ITEM_DRAGALGITE] =
@@ -6844,8 +6846,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Dragalgite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Dragalgite,
+        .iconPic = gItemIcon_Dragalgite,
+        .iconPalette = gItemIconPalette_Dragalgite,
     },
 
     [ITEM_HAWLUCHANITE] =
@@ -6862,8 +6864,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Hawluchanite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Hawluchanite,
+        .iconPic = gItemIcon_Hawluchanite,
+        .iconPalette = gItemIconPalette_Hawluchanite,
     },
 
     [ITEM_ZYGARDITE] =
@@ -6880,8 +6882,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Zygardite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Zygardite,
+        .iconPic = gItemIcon_Zygardite,
+        .iconPalette = gItemIconPalette_Zygardite,
     },
 
     [ITEM_DRAMPANITE] =
@@ -6898,8 +6900,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Drampanite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Drampanite,
+        .iconPic = gItemIcon_Drampanite,
+        .iconPalette = gItemIconPalette_Drampanite,
     },
 
     [ITEM_FALINKSITE] =
@@ -6916,8 +6918,335 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_QuestionMark, // gItemIcon_Falinksite,
-        .iconPalette = gItemIconPalette_QuestionMark, // gItemIconPalette_Falinksite,
+        .iconPic = gItemIcon_Falinksite,
+        .iconPalette = gItemIconPalette_Falinksite,
+    },
+
+    [ITEM_HEATRANITE] =
+    {
+        .name = ITEM_NAME("Heatranite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Heatran to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Heatranite,
+        .iconPalette = gItemIconPalette_Heatranite,
+    },
+
+    [ITEM_DARKRANITE] =
+    {
+        .name = ITEM_NAME("Darkranite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Darkrai to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Darkranite,
+        .iconPalette = gItemIconPalette_Darkranite,
+    },
+
+    [ITEM_ZERAORITE] =
+    {
+        .name = ITEM_NAME("Zeraorite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Zeraora to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Zeraorite,
+        .iconPalette = gItemIconPalette_Zeraorite,
+    },
+
+    [ITEM_RAICHUNITE_X] =
+    {
+        .name = ITEM_NAME("Raichunite X"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sRaichuniteDesc,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_RaichuniteX,
+        .iconPalette = gItemIconPalette_RaichuniteX,
+    },
+
+    [ITEM_RAICHUNITE_Y] =
+    {
+        .name = ITEM_NAME("Raichunite Y"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sRaichuniteDesc,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_RaichuniteY,
+        .iconPalette = gItemIconPalette_RaichuniteY,
+    },
+
+    [ITEM_CHIMECHITE] =
+    {
+        .name = ITEM_NAME("Chimechite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Chimecho to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Chimechite,
+        .iconPalette = gItemIconPalette_Chimechite,
+    },
+
+    [ITEM_ABSOLITE_Z] =
+    {
+        .name = ITEM_NAME("Absolite Z"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sAbsoliteDesc,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_AbsoliteZ,
+        .iconPalette = gItemIconPalette_AbsoliteZ,
+    },
+
+    [ITEM_STARAPTITE] =
+    {
+        .name = ITEM_NAME("Staraptite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Staraptor to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Staraptite,
+        .iconPalette = gItemIconPalette_Staraptite,
+    },
+
+    [ITEM_GARCHOMPITE_Z] =
+    {
+        .name = ITEM_NAME("Garchompite Z"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sGarchompiteDesc,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_GarchompiteZ,
+        .iconPalette = gItemIconPalette_GarchompiteZ,
+    },
+
+    [ITEM_LUCARIONITE_Z] =
+    {
+        .name = ITEM_NAME("Lucarionite Z"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sLucarioniteDesc,
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_LucarioniteZ,
+        .iconPalette = gItemIconPalette_LucarioniteZ,
+    },
+
+    [ITEM_GOLURKITE] =
+    {
+        .name = ITEM_NAME("Golurkite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Golurk to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Golurkite,
+        .iconPalette = gItemIconPalette_Golurkite,
+    },
+
+    [ITEM_MEOWSTICITE] =
+    {
+        .name = ITEM_NAME("Meowsticite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Meowstic to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Meowsticite,
+        .iconPalette = gItemIconPalette_Meowsticite,
+    },
+
+    [ITEM_CRABOMINITE] =
+    {
+        .name = ITEM_NAME("Crabominite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Crabominable to\n"
+            "Mega in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Crabominite,
+        .iconPalette = gItemIconPalette_Crabominite,
+    },
+
+    [ITEM_GOLISOPITE] =
+    {
+        .name = ITEM_NAME("Golisopite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Golisopod to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Golisopite,
+        .iconPalette = gItemIconPalette_Golisopite,
+    },
+
+    [ITEM_MAGEARNITE] =
+    {
+        .name = ITEM_NAME("Magearnite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Magearna to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Magearnite,
+        .iconPalette = gItemIconPalette_Magearnite,
+    },
+
+    [ITEM_SCOVILLAINITE] =
+    {
+        .name = ITEM_NAME("Scovillainite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Scovillain to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Scovillainite,
+        .iconPalette = gItemIconPalette_Scovillainite,
+    },
+
+    [ITEM_BAXCALIBRITE] =
+    {
+        .name = ITEM_NAME("Baxcalibrite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Baxcalibur to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Baxcalibrite,
+        .iconPalette = gItemIconPalette_Baxcalibrite,
+    },
+
+    [ITEM_TATSUGIRINITE] =
+    {
+        .name = ITEM_NAME("Tatsugirinite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Tatsugiri to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Tatsugirinite,
+        .iconPalette = gItemIconPalette_Tatsugirinite,
+    },
+
+    [ITEM_GLIMMORANITE] =
+    {
+        .name = ITEM_NAME("Glimmoranite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = COMPOUND_STRING(
+            "This stone enables\n"
+            "Glimmora to Mega\n"
+            "Evolve in battle."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_MEGA_STONE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Glimmoranite,
+        .iconPalette = gItemIconPalette_Glimmoranite,
     },
 
 // Gems
@@ -8159,11 +8488,19 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Lax Incense"),
         .price = (I_PRICE >= GEN_7) ? 5000 : 9600,
         .holdEffect = HOLD_EFFECT_EVASION_UP,
+    #if I_LAX_INCENSE_BOOST >= GEN_4
         .holdEffectParam = 10,
+        .description = COMPOUND_STRING(
+            "A hold item that\n"
+            "lowers the\n"
+            "foe's accuracy."),
+    #else
+        .holdEffectParam = 5,
         .description = COMPOUND_STRING(
             "A hold item that\n"
             "slightly lowers the\n"
             "foe's accuracy."),
+    #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_INCENSE,
         .type = ITEM_USE_BAG_MENU,
@@ -9087,22 +9424,22 @@ const struct Item gItemsInfo[] =
         .price = 200,
     #endif
         .holdEffect = HOLD_EFFECT_ICY_ROCK,
-        #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
+    #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
         .description = COMPOUND_STRING(
             "Extends the length\n"
             "of the move Hail\n"
             "used by the holder."),
-        #elif B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_SNOW
+    #elif B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_SNOW
         .description = COMPOUND_STRING(
             "Extends the length\n"
             "of Snowscape if\n"
             "used by the holder."),
-        #else
+    #else
         .description = COMPOUND_STRING(
             "Extends the length\n"
             "of cold weathers\n"
             "used by the holder."),
-        #endif
+    #endif
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -9349,22 +9686,22 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Exp. Share"),
         .holdEffect = HOLD_EFFECT_EXP_SHARE,
-        #if I_EXP_SHARE_ITEM >= GEN_6
-            .price = 0,
-            .importance = 1,
-            .description = COMPOUND_STRING(
-                "This device gives\n"
-                "exp. to other\n"
-                "party members."),
-            .pocket = POCKET_KEY_ITEMS,
-        #else
-            .price = (I_PRICE == GEN_1) ? 1 : 3000,
-            .description = COMPOUND_STRING(
-                "A hold item that\n"
-                "gets Exp. points\n"
-                "from battles."),
-            .pocket = POCKET_ITEMS,
-        #endif
+    #if I_EXP_SHARE_ITEM >= GEN_6
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "This device gives\n"
+            "exp. to other\n"
+            "party members."),
+        .pocket = POCKET_KEY_ITEMS,
+    #else
+        .price = (I_PRICE == GEN_1) ? 1 : 3000,
+        .description = COMPOUND_STRING(
+            "A hold item that\n"
+            "gets Exp. points\n"
+            "from battles."),
+        .pocket = POCKET_ITEMS,
+    #endif
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_FIELD,
         .fieldUseFunc = ItemUseOutOfBattle_ExpShare,
@@ -10764,21 +11101,21 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Sitrus Berry"),
         .pluralName = ITEM_PLURAL_NAME("Sitrus Berries"),
         .price = (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
-        #if I_SITRUS_BERRY_HEAL >= GEN_4
-            .holdEffect = HOLD_EFFECT_RESTORE_PCT_HP,
-            .holdEffectParam = 25,
-            .description = COMPOUND_STRING(
-                "A hold item that\n"
-                "restores the user's\n"
-                "HP a little."),
-        #else
-            .holdEffect = HOLD_EFFECT_RESTORE_HP,
-            .holdEffectParam = 30,
-            .description = COMPOUND_STRING(
-                "A hold item that\n"
-                "restores 30 HP in\n"
-                "battle."),
-        #endif
+    #if I_SITRUS_BERRY_HEAL >= GEN_4
+        .holdEffect = HOLD_EFFECT_RESTORE_PCT_HP,
+        .holdEffectParam = 25,
+        .description = COMPOUND_STRING(
+            "A hold item that\n"
+            "restores the user's\n"
+            "HP a little."),
+    #else
+        .holdEffect = HOLD_EFFECT_RESTORE_HP,
+        .holdEffectParam = 30,
+        .description = COMPOUND_STRING(
+            "A hold item that\n"
+            "restores 30 HP in\n"
+            "battle."),
+    #endif
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
@@ -13641,7 +13978,8 @@ const struct Item gItemsInfo[] =
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_FIELD,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Bike,
+        .secondaryId = STANDARD_BIKE,
         .iconPic = gItemIcon_Bicycle,
         .iconPalette = gItemIconPalette_Bicycle,
     },
@@ -13774,11 +14112,11 @@ const struct Item gItemsInfo[] =
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_FIELD,
-#if I_VS_SEEKER_CHARGING != 0
+    #if I_VS_SEEKER_CHARGING != 0
         .fieldUseFunc = FieldUseFunc_VsSeeker,
-#else
+    #else
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-#endif
+    #endif
         .iconPic = gItemIcon_VsSeeker,
         .iconPalette = gItemIconPalette_VsSeeker,
     },
@@ -15151,7 +15489,7 @@ const struct Item gItemsInfo[] =
             "that makes certain\n"
             "Pokémon evolve."),
         .pocket = POCKET_ITEMS,
-	    .sortType = ITEM_TYPE_EVOLUTION_ITEM,
+        .sortType = ITEM_TYPE_EVOLUTION_ITEM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
         .effect = gItemEffect_EvoItem,
@@ -15169,7 +15507,7 @@ const struct Item gItemsInfo[] =
             "that makes certain\n"
             "Pokémon evolve."),
         .pocket = POCKET_ITEMS,
-	    .sortType = ITEM_TYPE_EVOLUTION_ITEM,
+        .sortType = ITEM_TYPE_EVOLUTION_ITEM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
         .effect = gItemEffect_EvoItem,
@@ -15187,7 +15525,7 @@ const struct Item gItemsInfo[] =
             "that makes certain\n"
             "Pokémon evolve."),
         .pocket = POCKET_ITEMS,
-	    .sortType = ITEM_TYPE_EVOLUTION_ITEM,
+        .sortType = ITEM_TYPE_EVOLUTION_ITEM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
         .effect = gItemEffect_EvoItem,
